@@ -1,0 +1,6 @@
+i3-wm
+i3blocks
+greenclip
+
+hyprland
+waybar

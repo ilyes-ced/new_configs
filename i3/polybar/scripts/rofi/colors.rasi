@@ -1,0 +1,10 @@
+/* colors */
+
+* {
+  al:   #00000000;
+  background:   #0c0618;
+  background-alt:  #6D55D4;
+  foreground:   #e3cde6;
+  active:   #9878FF;
+  select:   #D12ECB;
+}

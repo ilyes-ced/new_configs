@@ -1,0 +1,21 @@
+    /home/dude/.config/tmux/plugins/tmux/catppuccin-mocha.tmuxtheme
+# NOTE: you can use vars with $<var> and ${<var>} as long as the str i>
+# WARNING: hex colors can't contain capital letters
+
+# --> Catppuccin (Mocha)
+thm_bg="{{color0}}"
+thm_fg="{{color7}}"
+thm_cyan="{{color6}}"
+thm_black="{{color0}}"
+thm_gray="{{color8}}"
+thm_magenta="{{color5}}"
+thm_red="{{color1}}"
+thm_pink="{{color9}}"
+thm_green="{{color2}}"
+thm_yellow="{{color3}}"
+thm_blue="{{color4}}"
+thm_orange="{{color11}}"
+thm_black4="#ff0000"
+
+
+

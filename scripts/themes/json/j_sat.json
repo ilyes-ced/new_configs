@@ -1,0 +1,21 @@
+{
+    "color0": "#000000",
+    "color1": "#DD0007",
+    "color2": "#07DD00",
+    "color3": "#DDD600",
+    "color4": "#0007DD",
+    "color5": "#D600DD",
+    "color6": "#00DDD6",
+    "color7": "#F2F2F2",
+    "color8": "#7D7D7D",
+    "color9": "#FF7478",
+    "color10": "#78FF74",
+    "color11": "#FFFA74",
+    "color12": "#7478FF",
+    "color13": "#FA74FF",
+    "color14": "#74FFFA",
+    "color15": "#FFFFFF",
+    "foreground": "#23476A",
+    "background": "#758480",
+    "cursor": "#23476A"
+}

@@ -1,0 +1,11 @@
+GitHub.github-vscode-theme
+naumovs.color-highlight
+PKief.material-icon-theme
+rust-lang.rust-analyzer
+tamasfe.even-better-toml
+serayuzgur.crates
+ms-vscode.vscode-typescript-next
+aaron-bond.better-comments
+pranaygp.vscode-css-peek
+streetsidesoftware.code-spell-checker
+yzhang.markdown-all-in-one

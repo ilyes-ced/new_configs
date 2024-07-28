@@ -1,0 +1,18 @@
+[font]
+size = 8
+
+  [font.normal]
+  family = "jetBrainsMonoNerdFont"
+  style = "Medium"
+
+  [font.bold]
+  family = "jetBrainsMonoNerdFont"
+  style = "Bold"
+
+  [font.italic]
+  family = "jetBrainsMonoNerdFont"
+  style = "Italic"
+
+  [font.bold_italic]
+  family = "jetBrainsMonoNerdFont"
+  style = "Bold Italic"
