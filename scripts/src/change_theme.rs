@@ -94,8 +94,8 @@ fn process_pywal(args: Vec<String>) {
     );
 
     // apparantly putting the entire command in a string doesnt work yopu need to put each part of the command in an .arg
-    //let output = Command::new(format!("wal --backend {} -i {} && /home/dude/setup/scripts/target/release/gtk_theme", backend, wallpaper_path))
-    //let cmd = format!("wal --backend {} -i {} && /home/dude/setup/scripts/target/release/gtk_theme", backend, wallpaper_path);
+    //let output = Command::new(format!("wal --backend {} -i {} && ~/new_configs/scripts/target/release/gtk_theme", backend, wallpaper_path))
+    //let cmd = format!("wal --backend {} -i {} && ~/new_configs/scripts/target/release/gtk_theme", backend, wallpaper_path);
 
     let output = Command::new("wal")
         //.arg(format!("--backend {}", backend))
@@ -125,7 +125,7 @@ fn process_pywal(args: Vec<String>) {
     // println!("setting the gtk themes\n");
     // gtk_theme::main();
     set_wallpaper(Some(wallpaper_path));
-    //let output = Command::new("/home/dude/setup/scripts/target/release/gtk_theme")
+    //let output = Command::new("~/new_configs/scripts/target/release/gtk_theme")
 }
 
 fn decide_backend(backend: &String) -> &'static str {
@@ -151,12 +151,12 @@ fn decide_wallpaper(wallpaper: &String) -> String {
     let wallpaper = wallpaper.split("=").last().unwrap();
     if wallpaper == "random" {
         let mut rng = rand::thread_rng();
-        let files = fs::read_dir("/home/dude/Pictures/wallpapers/").unwrap();
+        let files = fs::read_dir("~/Pictures/wallpapers/").unwrap();
         let file = files.choose(&mut rng).unwrap().unwrap();
 
         String::from_utf8_lossy(
             &[
-                b"/home/dude/Pictures/wallpapers/",
+                b"~/Pictures/wallpapers/",
                 file.file_name().as_bytes(),
             ]
             .concat(),
@@ -164,7 +164,7 @@ fn decide_wallpaper(wallpaper: &String) -> String {
         .to_string()
     } else {
         let wall_path: String = String::from_utf8_lossy(
-            &[b"/home/dude/Pictures/wallpapers/", wallpaper.as_bytes()].concat(),
+            &[b"~/Pictures/wallpapers/", wallpaper.as_bytes()].concat(),
         )
         .to_string();
         if Path::new(&wall_path).exists() {
@@ -177,12 +177,12 @@ fn decide_wallpaper(wallpaper: &String) -> String {
 }
 
 fn pywal_json_to_json() {
-    let binding = read_to_string("/home/dude/.cache/wal/colors.json").unwrap();
+    let binding = read_to_string("~/.cache/wal/colors.json").unwrap();
     let colors = binding.as_str();
     let s: Value = from_str(colors).expect("JSON was not well-formatted");
 
     let reg = Handlebars::new();
-    let template = fs::read_to_string("/home/dude/setup/scripts/templates/json.json").unwrap();
+    let template = fs::read_to_string("~/new_configs/scripts/templates/json.json").unwrap();
     println!("{:#?}", s["colors"]["color8"].as_str().unwrap());
     let new_json = reg
         .render_template(
@@ -210,7 +210,7 @@ fn pywal_json_to_json() {
             }),
         )
         .unwrap();
-    let mut file = File::create("/home/dude/setup/scripts/themes/active/active.json").unwrap();
+    let mut file = File::create("~/new_configs/scripts/themes/active/active.json").unwrap();
     file.write_all(new_json.as_bytes()).unwrap();
 }
 
@@ -228,10 +228,10 @@ fn decide_theme_name(theme_name: &str) -> String {
         //select random theme
         let mut rng = rand::thread_rng();
         let file = if THEME_DIR == "favs"{
-            let files = fs::read_dir("/home/dude/setup/scripts/themes/favs/").unwrap();
+            let files = fs::read_dir("~/new_configs/scripts/themes/favs/").unwrap();
             files.choose(&mut rng).unwrap().unwrap()
         }else if THEME_DIR == "favs"{
-            let files = fs::read_dir("/home/dude/setup/scripts/themes/json/").unwrap();
+            let files = fs::read_dir("~/new_configs/scripts/themes/json/").unwrap();
             files.choose(&mut rng).unwrap().unwrap()
         }else{
             println!("wrong THEME_DIR",);
@@ -239,7 +239,7 @@ fn decide_theme_name(theme_name: &str) -> String {
         };
         String::from_utf8_lossy(
             &[
-                b"/home/dude/setup/scripts/themes/json/",
+                b"~/new_configs/scripts/themes/json/",
                 file.file_name().as_bytes(),
             ]
             .concat(),
@@ -248,7 +248,7 @@ fn decide_theme_name(theme_name: &str) -> String {
     } else {
         let theme = String::from_utf8_lossy(
             &[
-                b"/home/dude/setup/scripts/themes/json/",
+                b"~/new_configs/scripts/themes/json/",
                 theme_name.as_bytes(),
                 b".json",
             ]
@@ -340,7 +340,7 @@ fn set_wallpaper(wallpaper_path: Option<String>) {
     match wallpaper_path {
         Some(path) => {
             let output = Command::new("rm")
-                .arg("/home/dude/setup/scripts/themes/active/wallpaper")
+                .arg("~/new_configs/scripts/themes/active/wallpaper")
                 .output()
                 .expect("Failed to execute command");
             println!("status: {}", output.status);
@@ -349,7 +349,7 @@ fn set_wallpaper(wallpaper_path: Option<String>) {
 
             let output = Command::new("ln")
                 .arg(path)
-                .arg("/home/dude/setup/scripts/themes/active/wallpaper")
+                .arg("~/new_configs/scripts/themes/active/wallpaper")
                 .output()
                 .expect("Failed to execute command");
             println!("status: {}", output.status);

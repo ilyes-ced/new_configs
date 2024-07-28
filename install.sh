@@ -71,7 +71,7 @@ echo "All yay packages installed successfully!"
 ############################################
 ############################################
 cd Repos
-git clone https://github.com/simeononsecurity/FireFox-Privacy-Script
+git clone https://github.com/simeononsecurity/FireFox-Privacy-Script --depth 1
 cd FireFox-Privacy-Script
 sudo chmod +x ./sos-firefoxprivacy.sh
 sudo bash ./sos-firefoxprivacy.sh
@@ -143,7 +143,7 @@ fi
 
 # installing eww
 cd Repos 
-git clone https://github.com/elkowar/eww
+git clone https://github.com/elkowar/eww  --depth 1
 cd eww
 cargo build --release --no-default-features --features x11
 cp target/release/eww ~/Installs
@@ -161,7 +161,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 sed -i '/^plugins=(/ s/plugins=(\([^)]*\))/plugins=(\1 zsh-syntax-highlighting zsh-autosuggestions)/' .zshrc
 # pokemon scripts for zsh
 cd ~/Repos
-git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git
+git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git  --depth 1
 cd pokemon-colorscripts
 sudo ./install.sh
 echo "pokemon-colorscripts -r" >> ~/.zshrc
@@ -205,8 +205,14 @@ git config --global user.email "random_dude_233@proton.me"
 sudo cp dwm.desktop /usr/share/xsessions/
 
 
+sudo make clean install ~/new_confis/suckless/dwm/
+sudo make clean install ~/new_confis/suckless/dmenu/
+sudo make clean install ~/new_confis/suckless/st/
 
 
+# maybe add eww for dwm or hyprland 
+# set desktop keyboard map to fr
+ 
 
 # add i3 configs
 # add blackarch repo + maybe most useful tools
@@ -215,3 +221,7 @@ sudo cp dwm.desktop /usr/share/xsessions/
 
 # add option to save password and use it later
 # add option to select a WM or multiple
+
+# add some tweakks to hyprdots
+
+# install grub theme

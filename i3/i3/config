@@ -327,4 +327,5 @@ exec_always --no-startup-id ~/.config/i3/scripts/i3_autostart
 
 
 #exec_always --no-startup-id ~/setup/scripts/target/release/change_theme --type=pywal --wallpaper=random --backend=random
-exec_always --no-startup-id feh --bg-fill /home/dude/setup/scripts/themes/active/wallpaper
+exec_always --no-startup-id feh --bg-fill ~/new_configs/scripts/themes/active/wallpaper
+exec_always --no-startup-id greenclip daemon

@@ -1,0 +1,20 @@
+
+fire fox extentions
+brave
+
+https://github.com/simeononsecurity/FireFox-Privacy-Script
+green clip
+
+
+
+
+
+add wallpapers URLS to download automatically
+
+
+color themes {
+    rose pine
+    catpucin
+    tokyonight
+    + add some from hyperdots + his wallpapers
+}
