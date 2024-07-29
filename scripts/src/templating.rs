@@ -51,18 +51,26 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
     });
 
     let _ = create_file(&json_values, format!("{}{}", template_path, "json.json"), format!("{}{}", results_path, "active.json")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "alacritty.toml"), format!("{}{}", results_path, "alacritty.toml")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "colors.ini"), format!("{}{}", results_path, "colors.ini")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "rofi.rasi"), format!("{}{}", results_path, "rofi.rasi")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "colors"), format!("{}{}", results_path, "colors")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "bar_config"), format!("{}{}", results_path, "bar_config")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "config.kdl"), format!("{}{}", results_path, "config.kdl")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "dunstrc"), format!("{}{}", results_path, "dunstrc")).unwrap();
 
-
+    
+    
+    
+    
+    
+    
+    
     Ok(())
 }
 
 
 fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dyn Error>> {
-
-    println!("#############################");
-    println!("{}", template);
-    println!("{}", result);
-
     let reg = Handlebars::new();
     let template = fs::read_to_string(template).unwrap();
     let new_json = reg.render_template(
@@ -96,281 +104,9 @@ fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dy
 
 
 
-
-
-fn create_json(s: &Value) -> Result<(), Box<dyn Error>> {
-    let reg = Handlebars::new();
-    let template = fs::read_to_string("~/new_configs/scripts/templates/json.json").unwrap();
-    let new_json = reg.render_template(
-        &template,
-        &json!({
-            "color0": s["color0"],
-            "color1": s["color1"],
-            "color2": s["color2"],
-            "color3": s["color3"],
-            "color4": s["color4"],
-            "color5": s["color5"],
-            "color6": s["color6"],
-            "color7": s["color7"],
-            "color8": s["color8"],
-            "color9": s["color9"],
-            "color10": s["color10"],
-            "color11": s["color11"],
-            "color12": s["color12"],
-            "color13": s["color13"],
-            "color14": s["color14"],
-            "color15": s["color15"],
-            "background": s["background"],
-            "foreground": s["foreground"],
-            "cursor": s["cursor"],
-        }),
-    )?;
-    let mut file = File::create("~/new_configs/scripts/themes/active/active.json").unwrap();
-    file.write_all(new_json.as_bytes()).unwrap();
-    Ok(())
-}
-
-fn create_alacritty(s: &Value) -> Result<(), Box<dyn Error>> {
-    let reg = Handlebars::new();
-    let template = fs::read_to_string("~/new_configs/scripts/templates/alacritty.toml").unwrap();
-    let new_json = reg.render_template(
-        &template,
-        &json!({
-            "color0": s["color0"],
-            "color1": s["color1"],
-            "color2": s["color2"],
-            "color3": s["color3"],
-            "color4": s["color4"],
-            "color5": s["color5"],
-            "color6": s["color6"],
-            "color7": s["color7"],
-            "color8": s["color8"],
-            "color9": s["color9"],
-            "color10": s["color10"],
-            "color11": s["color11"],
-            "color12": s["color12"],
-            "color13": s["color13"],
-            "color14": s["color14"],
-            "color15": s["color15"],
-            "background": s["background"],
-            "foreground": s["foreground"],
-            "cursor": s["cursor"],
-        }),
-    )?;
-    let mut file = File::create("~/new_configs/scripts/themes/active/alacritty.toml").unwrap();
-    let mut file = File::create("~/.config/alacritty/colors.toml").unwrap();
-    file.write_all(new_json.as_bytes()).unwrap();
-    Ok(())
-}
-
-fn create_polybar(s: &Value) -> Result<(), Box<dyn Error>> {
-    let reg = Handlebars::new();
-    let template = fs::read_to_string("~/new_configs/scripts/templates/colors.ini").unwrap();
-    let new_json = reg.render_template(
-        &template,
-        &json!({
-            "color0": s["color0"],
-            "color1": s["color1"],
-            "color2": s["color2"],
-            "color3": s["color3"],
-            "color4": s["color4"],
-            "color5": s["color5"],
-            "color6": s["color6"],
-            "color7": s["color7"],
-            "color8": s["color8"],
-            "color9": s["color9"],
-            "color10": s["color10"],
-            "color11": s["color11"],
-            "color12": s["color12"],
-            "color13": s["color13"],
-            "color14": s["color14"],
-            "color15": s["color15"],
-            "background": s["background"],
-            "foreground": s["foreground"],
-            "cursor": s["cursor"],
-        }),
-    )?;
-    let mut file = File::create("~/new_configs/scripts/themes/active/colors.ini").unwrap();
-    file.write_all(new_json.as_bytes()).unwrap();
-    Ok(())
-}
-
-fn create_rofi(s: &Value) -> Result<(), Box<dyn Error>> {
-    let reg = Handlebars::new();
-    let template = fs::read_to_string("~/new_configs/scripts/templates/rofi.rasi").unwrap();
-    let new_json = reg.render_template(
-        &template,
-        &json!({
-            "color0": s["color0"],
-            "color1": s["color1"],
-            "color2": s["color2"],
-            "color3": s["color3"],
-            "color4": s["color4"],
-            "color5": s["color5"],
-            "color6": s["color6"],
-            "color7": s["color7"],
-            "color8": s["color8"],
-            "color9": s["color9"],
-            "color10": s["color10"],
-            "color11": s["color11"],
-            "color12": s["color12"],
-            "color13": s["color13"],
-            "color14": s["color14"],
-            "color15": s["color15"],
-            "background": s["background"],
-            "foreground": s["foreground"],
-            "cursor": s["cursor"],
-        }),
-    )?;
-    let mut file = File::create("~/.config/i3/theme/rofi/shared/colors.rasi").unwrap();
-    file.write_all(new_json.as_bytes()).unwrap();
-    Ok(())
-}
-
-fn create_i3(s: &Value) -> Result<(), Box<dyn Error>> {
-    let reg = Handlebars::new();
-    let template = fs::read_to_string("~/new_configs/scripts/templates/colors").unwrap();
-    let new_json = reg.render_template(
-        &template,
-        &json!({
-            "color0": s["color0"],
-            "color1": s["color1"],
-            "color2": s["color2"],
-            "color3": s["color3"],
-            "color4": s["color4"],
-            "color5": s["color5"],
-            "color6": s["color6"],
-            "color7": s["color7"],
-            "color8": s["color8"],
-            "color9": s["color9"],
-            "color10": s["color10"],
-            "color11": s["color11"],
-            "color12": s["color12"],
-            "color13": s["color13"],
-            "color14": s["color14"],
-            "color15": s["color15"],
-            "background": s["background"],
-            "foreground": s["foreground"],
-            "cursor": s["cursor"],
-        }),
-    )?;
-    let mut file = File::create("~/.config/i3/colors").unwrap();
-    file.write_all(new_json.as_bytes()).unwrap();
-    Ok(())
-}
-
-fn create_i3_bar(s: &Value) -> Result<(), Box<dyn Error>> {
-    let reg = Handlebars::new();
-    let template = fs::read_to_string("~/new_configs/scripts/templates/bar_config").unwrap();
-    let new_json = reg.render_template(
-        &template,
-        &json!({
-            "color0": s["color0"],
-            "color1": s["color1"],
-            "color2": s["color2"],
-            "color3": s["color3"],
-            "color4": s["color4"],
-            "color5": s["color5"],
-            "color6": s["color6"],
-            "color7": s["color7"],
-            "color8": s["color8"],
-            "color9": s["color9"],
-            "color10": s["color10"],
-            "color11": s["color11"],
-            "color12": s["color12"],
-            "color13": s["color13"],
-            "color14": s["color14"],
-            "color15": s["color15"],
-            "background": s["background"],
-            "foreground": s["foreground"],
-            "cursor": s["cursor"],
-        }),
-    )?;
-    let mut file = File::create("~/.config/i3/i3status/config").unwrap();
-    file.write_all(new_json.as_bytes()).unwrap();
-    Ok(())
-}
-
-fn create_zellij(s: &Value) -> Result<(), Box<dyn Error>> {
-    let reg = Handlebars::new();
-    let template = fs::read_to_string("~/new_configs/scripts/templates/config.kdl").unwrap();
-    let new_json = reg.render_template(
-        &template,
-        &json!({
-            "color0": s["color0"],
-            "color1": s["color1"],
-            "color2": s["color2"],
-            "color3": s["color3"],
-            "color4": s["color4"],
-            "color5": s["color5"],
-            "color6": s["color6"],
-            "color7": s["color7"],
-            "color8": s["color8"],
-            "color9": s["color9"],
-            "color10": s["color10"],
-            "color11": s["color11"],
-            "color12": s["color12"],
-            "color13": s["color13"],
-            "color14": s["color14"],
-            "color15": s["color15"],
-            "background": s["background"],
-            "foreground": s["foreground"],
-            "cursor": s["cursor"],
-        }),
-    )?;
-    let mut file = File::create("~/.config/zellij/config.kdl").unwrap();
-    file.write_all(new_json.as_bytes()).unwrap();
-    Ok(())
-}
-
-fn create_dunstrc(s: &Value) -> Result<(), Box<dyn Error>> {
-    let reg = Handlebars::new();
-    let template = fs::read_to_string("~/new_configs/scripts/templates/dunstrc").unwrap();
-    let new_json = reg.render_template(
-        &template,
-        &json!({
-            "color0": s["color0"],
-            "color1": s["color1"],
-            "color2": s["color2"],
-            "color3": s["color3"],
-            "color4": s["color4"],
-            "color5": s["color5"],
-            "color6": s["color6"],
-            "color7": s["color7"],
-            "color8": s["color8"],
-            "color9": s["color9"],
-            "color10": s["color10"],
-            "color11": s["color11"],
-            "color12": s["color12"],
-            "color13": s["color13"],
-            "color14": s["color14"],
-            "color15": s["color15"],
-            "background": s["background"],
-            "foreground": s["foreground"],
-            "cursor": s["cursor"],
-        }),
-    )?;
-    let mut file = File::create("~/.config/i3/dunstrc").unwrap();
-    file.write_all(new_json.as_bytes()).unwrap();
-    Ok(())
-}
-
-
-
-
-
-
-
-
-
-
-
-
 fn read_scheme_json(path: &Path) -> Result<Value, ()> {
     let binding = read_to_string(&path).unwrap();
     let colors = binding.as_str();
     let json: Value = from_str(colors).expect("JSON was not well-formatted");
     Ok(json)
 }
-
-

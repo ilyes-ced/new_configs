@@ -108,16 +108,16 @@ fn decide_theme(theme_name: &str) -> String {
 
 
 fn decide_wallpaper(wallpaper: &str) -> String {
-
     let config_path = env::var("CONFIG_PATH").unwrap_or_else(|_| {
         let home = home::home_dir().unwrap();
         home.join("Pictures/wallpapers/").to_string_lossy().into_owned()
     });
     
     let wall_path: String = String::from_utf8_lossy(
-        &[config_path.as_bytes()].concat(),
+        &[config_path.as_bytes(), wallpaper.as_bytes()].concat(),
     )
     .to_string();
+
     if Path::new(&wall_path).exists() {
         wall_path
     } else {
@@ -131,8 +131,13 @@ fn decide_wallpaper(wallpaper: &str) -> String {
 
 
 fn set_wallpaper(wallpaper_path: String) {
+    let wall_path = env::var("CONFIG_PATH").unwrap_or_else(|_| {
+        let home = home::home_dir().unwrap();
+        home.join("new_configs/scripts/active/wallpaper").to_string_lossy().into_owned()
+    });
+
     let output = Command::new("rm")
-        .arg("~/new_configs/scripts/themes/active/wallpaper")
+        .arg(&wall_path)
         .output()
         .expect("Failed to execute command");
     println!("status: {}", output.status);
@@ -141,7 +146,7 @@ fn set_wallpaper(wallpaper_path: String) {
 
     let output = Command::new("ln")
         .arg(wallpaper_path)
-        .arg("~/new_configs/scripts/themes/active/wallpaper")
+        .arg(&wall_path)
         .output()
         .expect("Failed to execute command");
     println!("status: {}", output.status);
