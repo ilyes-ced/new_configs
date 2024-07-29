@@ -1,2 +1,3 @@
 vscodium
 brave
+floorp-bin

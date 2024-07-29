@@ -9,13 +9,17 @@ use std::{
     path::Path,
     process::Command,
 };
+use tabled::{
+    builder::Builder,
+    settings::Style,
+    Table,
+};
 
 // can be "all" or "favs"
 // favs for my faviourt themes and all for all
 const THEME_DIR: &str = "favs";
 const BRIGHTER_VALUE: i64 = 30;
 
-mod templating;
 
 const MESSAGE: &str = "
     --type=<pywal|custom>
@@ -252,6 +256,7 @@ fn decide_theme_name(theme_name: &str) -> String {
         if Path::new(&theme).exists() {
             return theme;
         } else {
+            print_table();
             println!(
                 "selected theme is unavaillable please select a valid theme:: {}",
                 theme
@@ -299,6 +304,35 @@ fn process_custom(args: Vec<String>) {
     //copy the selected theme to pywal cache
 }
 
+fn print_table() {
+    const ROWS: usize = 91;
+    const COLS: usize = 6;
+    let mut arr2d: [[&str; COLS]; ROWS] = [[""; COLS]; ROWS];
+
+    for i in 0..ROWS {
+        for j in 0..COLS {
+            arr2d[i][j] = THEMES_NAMES[i * COLS + j];
+        }
+    }
+
+    let mut builder = Builder::default();
+    for line in THEMES_NAMES.iter() {
+        if line.is_empty() {
+            continue;
+        }
+
+        let words: Vec<_> = line.trim().split_terminator(' ').collect();
+        builder.push_record(words);
+    }
+
+    let columns = (0..builder.count_columns()).map(|i| i.to_string());
+    builder.set_header(columns);
+
+    let table = Table::new(arr2d).with(Style::extended()).to_string();
+
+    println!("{}", table);
+    println!("NOTE: seeing all themes requires fullscreen mode (cant get it to display according to term width (annoying))");
+}
 
 fn set_wallpaper(wallpaper_path: Option<String>) {
     match wallpaper_path {

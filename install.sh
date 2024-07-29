@@ -190,29 +190,52 @@ git config --global user.email "random_dude_233@proton.me"
 
 
 
+
+
+
+
+
+
+
+############################################
+############################################
+############################################
+# not needed i3 is enough for now
+############################################
+############################################
+############################################
+
 # add polybar
 # still not sure if i want to use it
 # sudo pacman -S polybar
 # mkdir ~/.config/polybar
 
 
-
-
-
 # add dwm + patches later
 
 # add dwm desktop
-sudo cp dwm.desktop /usr/share/xsessions/
-
-
-sudo make clean install ~/new_confis/suckless/dwm/
-sudo make clean install ~/new_confis/suckless/dmenu/
-sudo make clean install ~/new_confis/suckless/st/
+# sudo cp dwm.desktop /usr/share/xsessions/
+# sudo make install clean ~/new_configs/suckless/dwm/
+# sudo make install clean ~/new_configs/suckless/dmenu/
+# sudo make install clean ~/new_configs/suckless/st/
 
 
 # maybe add eww for dwm or hyprland 
 # set desktop keyboard map to fr
- 
+
+# add some tweakks to hyprdots
+
+############################################
+############################################
+############################################
+
+
+
+
+
+
+
+
 
 # add i3 configs
 # add blackarch repo + maybe most useful tools
@@ -222,6 +245,5 @@ sudo make clean install ~/new_confis/suckless/st/
 # add option to save password and use it later
 # add option to select a WM or multiple
 
-# add some tweakks to hyprdots
 
 # install grub theme
