@@ -29,7 +29,7 @@
 
 ## Load i3 config files
 include ~/.config/i3/config.d/*.conf
-include ~/setup/scripts/themes/active/colors
+include ~/.config/i3/colors
 
 ## Enable/Disable i3 bar
 include ~/.config/i3/i3status/statusbar.conf
@@ -326,6 +326,5 @@ exec_always --no-startup-id ~/.config/i3/scripts/i3_autostart
 ## With startup-notification, i3 can make sure that a window appears on the workspace on which you used the exec command.
 
 
-#exec_always --no-startup-id ~/setup/scripts/target/release/change_theme --type=pywal --wallpaper=random --backend=random
 exec_always --no-startup-id feh --bg-fill ~/new_configs/scripts/themes/active/wallpaper
 exec_always --no-startup-id greenclip daemon

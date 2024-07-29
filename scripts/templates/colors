@@ -30,7 +30,7 @@ client.background        $i3_cl_col_bg
 
 
 bar {
-	status_command i3status -c ~/setup/scripts/themes/active/bar_config
+	status_command i3status -c ~/.config/i3/i3status/config
     id main-bar
     position bottom
     mode dock

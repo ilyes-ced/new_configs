@@ -12,14 +12,15 @@
 
 
 
-#!/bin/bash
-
-# Function to display usage
-usage() {
-    echo "Usage:"
-    echo "  $0"
-    exit 1
+# run the theme templating and changing
+change_theme() {
+    cd ~/new_configs/scripts
+    cargo run --bin main -- --theme_name=$(basename $theme_path) --wallpaper=$(basename $wallpaper_path) && i3-msg restart && neofetch
+    # use the rust script 
+    # restart i3
+    # run neofetch
 }
+
 
 # Function to validate input
 validate_input() {
@@ -36,11 +37,43 @@ validate_input() {
 }
 
 
-# Function to check if a file exists
+
+theme_path=""
+wallpaper_path=""
 check_file_exists() {
-    local file_path=$1
-    echo $file_path
-    if [[ -f "$file_path" ]]; then
+    if [[ "$2" == "theme" ]]; then
+        if [[ "$1" == "random" ]]; then
+            selected=$(find "$HOME/new_configs/themes/" -type f | shuf -n 1)
+            theme_path=$selected
+            echo $selected
+        else
+            theme_path=$HOME/new_configs/themes/$1.json
+        fi
+    elif [[ "$2" == "wallpaper" ]]; then
+        if [[ "$1" == "random" ]]; then
+            selected=$(find "$HOME/Pictures/wallpapers/" -type f | shuf -n 1)
+            wallpaper_path=$selected
+            echo $selected
+        else
+            wallpaper_path=$HOME/Pictures/wallpapers/$1
+        fi
+    else 
+        echo "needs to be theme or wallaperp"
+    fi
+
+
+
+
+
+    
+
+    
+    if [[ -f "$theme_path" ]]; then
+        return 0  # File exists
+    else
+        return 1  # File does not exist
+    fi
+    if [[ -f "$wallpaper_path" ]]; then
         return 0  # File exists
     else
         return 1  # File does not exist
@@ -68,7 +101,7 @@ case $choice in
             read -p "Enter theme name: " theme_name
 
             # Validate the input
-            if check_file_exists "$HOME/new_configs/themes/$theme_name.json"; then
+            if check_file_exists "$theme_name" "theme"; then
                 break
             else
                 echo "Theme doesnt exist please choose between <catppucin|dracula|nord|tokyonight|rose pine>"
@@ -76,10 +109,10 @@ case $choice in
         done
         # If custom is chosen, prompt for theme name and wallpaper
         while true; do
-            read -p "Enter wallpaper path: " wallpaper_path
+            read -p "Enter wallpaper path: " wallpaper_name
 
             # Validate the input
-            if check_file_exists "$HOME/Pictures/wallpapers/$wallpaper_path"; then
+            if check_file_exists "$wallpaper_name" "wallpaper"; then
                 break
             else
                 echo "Wallpaper doesnt exist"
@@ -87,17 +120,21 @@ case $choice in
         done
         # here we add the moving part
         # either using the rust script or by making a new one
-        echo "You have chosen a custom theme."
-        echo "Theme Name: $theme_name"
-        echo "Wallpaper Path: $wallpaper_path"
+        echo "finished the selection. starting the changing"
+        echo $(basename $theme_path)
+        echo $(basename $wallpaper_path)
+        change_theme
         ;;
     pywal)
         # If pywal is chosen, prompt for backend and wallpaper
         read -p "Enter backend <wal|colorthief>: " backend
-        read -p "Enter wallpaper path: " wallpaper_path
+        read -p "Enter wallpaper path: " wallpaper_name
         
         echo "You have chosen pywal."
         echo "Backend: $backend"
-        echo "Wallpaper Path: $wallpaper_path"
+        echo "Wallpaper Path: $wallpaper_name"
         ;;
 esac
+
+
+

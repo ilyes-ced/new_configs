@@ -8,6 +8,10 @@ edition = "2021"
 
 
 [[bin]]
+name = "main"
+path = "src/main.rs"
+
+[[bin]]
 name = "change_theme"
 path = "src/change_theme.rs"
 
@@ -19,3 +23,4 @@ serde_json = "1.0.48"
 handlebars = "4.3.7"
 rand = "0.8.5"
 array2d = "0.3.0"
+home = "0.5.9"

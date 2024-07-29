@@ -9,7 +9,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window";
+	modi:                       "shared/colors.rasi";
     show-icons:                 true;
     display-drun:               " Apps";
     display-run:                " Run";
@@ -20,7 +20,7 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "~/setup/scripts/themes/active/rofi.rasi"
+@import                          "shared/colors.rasi"
 @import                          "shared/fonts.rasi"
 
 * {
