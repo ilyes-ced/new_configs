@@ -1,0 +1,61 @@
+set $i3_cl_col_bg #191724
+set $i3_cl_col_fg #E0DEF4
+set $i3_cl_col_in #EB6F92
+set $i3_cl_col_afoc #9CCFD8
+#background for clarity on which window is active
+# this way onlye the active window is borderd and the other windows on vertical
+set $i3_cl_col_ifoc #EB6F92
+set $i3_cl_col_ufoc #F6C177
+set $i3_cl_col_urgt #C4A7E7
+set $i3_cl_col_phol #191724
+
+set $i3_bar_bg #191724
+set $i3_bar_fg #E0DEF4
+set $i3_bar_sep #292e39
+set $i3_bar_mod #EB6F92
+set $i3_bar_foc #9CCFD8
+set $i3_bar_act #F6C177
+set $i3_bar_ina #31748F
+set $i3_bar_urg #C4A7E7
+
+set $i3_bar_fonts JetBrainsMono Nerd Font 10
+
+
+client.focused           $i3_cl_col_afoc   $i3_cl_col_afoc   $i3_cl_col_bg   $i3_cl_col_in   $i3_cl_col_afoc
+client.focused_inactive  $i3_cl_col_ifoc   $i3_cl_col_ifoc   $i3_cl_col_bg   $i3_cl_col_in   $i3_cl_col_ifoc
+client.unfocused         $i3_cl_col_ufoc   $i3_cl_col_ufoc   $i3_cl_col_fg   $i3_cl_col_in   $i3_cl_col_ufoc
+client.urgent            $i3_cl_col_urgt   $i3_cl_col_urgt   $i3_cl_col_fg   $i3_cl_col_in   $i3_cl_col_urgt
+client.placeholder       $i3_cl_col_phol   $i3_cl_col_phol   $i3_cl_col_fg   $i3_cl_col_in   $i3_cl_col_phol
+client.background        $i3_cl_col_bg
+
+
+bar {
+	status_command i3status -c ~/setup/scripts/themes/active/bar_config
+    id main-bar
+    position bottom
+    mode invisible
+    hidden_state show
+    modifier Mod1
+    bindsym button2 workspace back_and_forth
+    bindsym --release button3 layout toggle
+	tray_output primary
+	tray_padding 6
+	separator_symbol "|"
+	workspace_buttons yes
+	workspace_min_width 22
+	strip_workspace_numbers yes
+	binding_mode_indicator yes
+    padding 0 10 0 0
+	font pango:$i3_bar_fonts
+    colors {
+        background $i3_bar_bg
+        statusline $i3_bar_fg
+        separator $i3_bar_sep
+
+        focused_workspace  $i3_bar_foc   $i3_bar_foc   $i3_bar_bg
+        active_workspace   $i3_bar_act   $i3_bar_act   $i3_bar_bg
+        inactive_workspace $i3_bar_ina   $i3_bar_ina   $i3_bar_fg
+        urgent_workspace   $i3_bar_urg   $i3_bar_urg   $i3_bar_bg
+        binding_mode       $i3_bar_mod   $i3_bar_mod   $i3_bar_bg
+    }
+}
