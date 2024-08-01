@@ -11,7 +11,7 @@ sudo pacman -S archlinux-keyring --noconfirm
 sudo pacman -Syu --noconfirm
 # needed to isntall vecodium at the time of writing this
 sudo pacman -S debugedit
-mkdir Repos Installs
+mkdir Repos Installs Projects
 
 
 
@@ -253,8 +253,7 @@ sudo cp -r i3/* ~/.config
 # add option to select a WM or multiple
 
 
-# install grub theme
-# in grub add numblock
+
 
 
 
@@ -262,14 +261,15 @@ sudo cp -r i3/* ~/.config
 
 
 # add blackarch repo + maybe most useful tools
-cd ~/Repos
-curl -O https://blackarch.org/strap.sh
-echo 26849980b35a42e6e192c6d9ed8c46f0d6d06047 strap.sh | sha1sum -c
-chmod +x strap.sh
-sudo ./strap.sh
-# NOTE: could fail
-sudo pacman -Syu --noconfirm
-
+# causes too much problems do it later manually
+## cd ~/Repos
+## curl -O https://blackarch.org/strap.sh
+## echo 26849980b35a42e6e192c6d9ed8c46f0d6d06047 strap.sh | sha1sum -c
+## chmod +x strap.sh
+## sudo ./strap.sh
+## # NOTE: could fail
+## sudo pacman -Syu --noconfirm
+## 
 
 
 
