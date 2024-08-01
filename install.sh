@@ -10,7 +10,7 @@
 sudo pacman -S archlinux-keyring --noconfirm
 sudo pacman -Syu --noconfirm
 # needed to isntall vecodium at the time of writing this
-sudo pacman -S debugedit
+sudo pacman -S debugedit --noconfirm
 mkdir Repos Installs Projects
 
 
@@ -312,15 +312,22 @@ git clone https://github.com/catppuccin/grub.git && cd grub
 sudo cp -r src/* /usr/share/grub/themes/
 GRUB_THEME="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
 
-FILE="/etc/default/grub" 
-
-sudo sed -i '/^GRUB_THEME/d; /^GRUB_THEME/i GRUB_THEME="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"' "$FILE"
+sudo sed -i "s|^GRUB_THEME=\".*\"|GRUB_THEME=\"$GRUB_THEME\"|" /etc/default/grub
 
 if [ $? -eq 0 ]; then
-    echo "Successfully modified GRUB_THEME in $FILE"
+    echo "GRUB_THEME updated successfully."
 else
-    echo "Failed to modify the file."
+    echo "Failed to update GRUB_THEME."
 fi
-
+# Update GRUB configuration
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
+
+
+
+
+
+
+# finished and delete all tempo files
+cd ~/Repos 
+sudo rm *rf *
