@@ -16,6 +16,22 @@
 change_theme() {
     cd ~/new_configs/scripts
     cargo run --bin main -- --theme_name=$(basename $theme_path) --wallpaper=$(basename $wallpaper_path) && i3-msg restart && neofetch
+    
+    ls ~/new_configs/scripts/active
+
+    
+
+    cp ~/new_configs/scripts/active/alacritty.toml ~/.config/alacritty/colors.toml
+    cp ~/new_configs/scripts/active/bar_config     ~/.config/i3/i3status/config
+    cp ~/new_configs/scripts/active/colors         ~/.config/i3/colors
+    cp ~/new_configs/scripts/active/colors.ini     ~/.config/polybar/colors.ini
+    cp ~/new_configs/scripts/active/config.kdl     ~/.config/zellij/config.kdl
+    cp ~/new_configs/scripts/active/dunstrc        ~/.config/i3/dunstrc
+    cp ~/new_configs/scripts/active/rofi.rasi      ~/.config/i3/theme/rofi/shared/colors.rasi
+
+    i3-msg restart
+
+    echo "finished copying files to .config DIRs"
     # use the rust script 
     # restart i3
     # run neofetch

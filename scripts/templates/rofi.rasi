@@ -1,7 +1,7 @@
 * {
     font:                        "JetBrains Mono Nerd Font 10";
     background:                  {{background}};
-    background-alt:              {{color6}};
+    background-alt:              {{color0}};
     foreground:                  {{foreground}};
     selected:                    {{color3}};
     active:                      {{color1}};

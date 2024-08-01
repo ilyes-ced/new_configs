@@ -7,6 +7,7 @@
     "color5": "#c4a7e7",
     "color6": "#ebbcba",
     "color7": "#e0def4",
+
     "color8": "#6e6a86",
     "color9": "#b4637a",
     "color10": "#286983",
@@ -15,7 +16,9 @@
     "color13": "#907aa9",
     "color14": "#d7827e",
     "color15": "#575279",
-    "foreground": "#e0def4",
+
     "background": "#191724",
+    "foreground": "#e0def4",
+    
     "cursor": "#524f67"
 }

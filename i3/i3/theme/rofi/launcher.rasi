@@ -9,7 +9,8 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "shared/colors.rasi";
+    /**** idk why the line below doesnt work ****/
+	/**** modi:                       "shared/colors.rasi"; ****/
     show-icons:                 true;
     display-drun:               " Apps";
     display-run:                " Run";

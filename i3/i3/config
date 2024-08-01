@@ -326,5 +326,5 @@ exec_always --no-startup-id ~/.config/i3/scripts/i3_autostart
 ## With startup-notification, i3 can make sure that a window appears on the workspace on which you used the exec command.
 
 
-exec_always --no-startup-id feh --bg-fill ~/new_configs/scripts/themes/active/wallpaper
+exec_always --no-startup-id feh --bg-fill ~/new_configs/scripts/active/wallpaper
 exec_always --no-startup-id greenclip daemon

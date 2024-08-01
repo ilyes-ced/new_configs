@@ -70,7 +70,7 @@ echo "All yay packages installed successfully!"
 ############################################
 ############################################
 ############################################
-cd Repos
+cd ~/Repos
 git clone https://github.com/simeononsecurity/FireFox-Privacy-Script --depth 1
 cd FireFox-Privacy-Script
 sudo chmod +x ./sos-firefoxprivacy.sh
@@ -142,7 +142,7 @@ fi
 
 
 # installing eww
-cd Repos 
+cd ~/Repos 
 git clone https://github.com/elkowar/eww  --depth 1
 cd eww
 cargo build --release --no-default-features --features x11
@@ -238,7 +238,14 @@ git config --global user.email "random_dude_233@proton.me"
 
 
 # add i3 configs
-# add blackarch repo + maybe most useful tools
+sudo cp -r i3/* ~/.config
+
+
+
+# add gtk themes
+
+
+
 # add firefox extentions
 
 
@@ -247,3 +254,73 @@ git config --global user.email "random_dude_233@proton.me"
 
 
 # install grub theme
+# in grub add numblock
+
+
+
+
+
+
+# add blackarch repo + maybe most useful tools
+cd ~/Repos
+curl -O https://blackarch.org/strap.sh
+echo 26849980b35a42e6e192c6d9ed8c46f0d6d06047 strap.sh | sha1sum -c
+chmod +x strap.sh
+sudo ./strap.sh
+# NOTE: could fail
+sudo pacman -Syu --noconfirm
+
+
+
+
+
+
+# sddm theme
+cd ~/Repos
+curl -L https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-mocha.zip > mocha.zip
+sudo unzip mocha.zip -d /usr/share/sddm/themes/
+
+# turn numlock on
+FILE="/etc/sddm.conf" 
+sudo sed -i 's/Numlock=off/Numlock=on/' "$FILE"
+if [ $? -eq 0 ]; then
+    echo "Successfully changed Numlock=off to Numlock=on in $FILE"
+else
+    echo "Failed to modify the file."
+fi
+
+sudo sed -i '/\[Theme\]/a Current=catppuccin-mocha' "$FILE"
+if [ $? -eq 0 ]; then
+    echo "Successfully added 'Current=catppuccin-mocha' after '[Theme]' in $FILE"
+else
+    echo "Failed to modify the file."
+fi
+
+
+
+
+# /////////////////////////////////////////
+# /////////////////////////////////////////
+# /////////////////////////////////////////
+# NOTE: not tested yet
+# /////////////////////////////////////////
+# /////////////////////////////////////////
+# /////////////////////////////////////////
+# grub theme
+cd ~/Repos
+git clone https://github.com/catppuccin/grub.git && cd grub
+sudo cp -r src/* /usr/share/grub/themes/
+GRUB_THEME="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
+
+FILE="/etc/default/grub" 
+
+sudo sed -i '/^GRUB_THEME/d; /^GRUB_THEME/i GRUB_THEME="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"' "$FILE"
+
+if [ $? -eq 0 ]; then
+    echo "Successfully modified GRUB_THEME in $FILE"
+else
+    echo "Failed to modify the file."
+fi
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+

@@ -11,16 +11,16 @@ theme "test"
 
 themes {
     test {
-        fg "#CDD6F4"
-        bg "#1E1E2E"
-        black "#1E1E2E"
-        red "#F38BA8"
-        green "#A6E3A1"
-        yellow "#F9E2AF"
-        blue "#89B4FA"
-        magenta "#F5C2E7"
-        cyan "#94E2D5"
-        white "#585B70"
-        orange "#F38BA8"
+        fg "#e0def4"
+        bg "#191724"
+        black "#191724"
+        red "#eb6f92"
+        green "#31748f"
+        yellow "#f6c177"
+        blue "#9ccfd8"
+        magenta "#c4a7e7"
+        cyan "#ebbcba"
+        white "#6e6a86"
+        orange "#b4637a"
     }
 }

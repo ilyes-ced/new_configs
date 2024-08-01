@@ -4,11 +4,11 @@ foreground = "{{foreground}}"
 
 [colors.cursor]
 text = "{{foreground}}"
-cursor = "{{color8}}"
+cursor = "{{cursor}}"
 
 [colors.vi_mode_cursor]
 text = "{{foreground}}"
-cursor = "{{color8}}"
+cursor = "{{cursor}}"
 
 [colors.line_indicator]
 foreground = "None"

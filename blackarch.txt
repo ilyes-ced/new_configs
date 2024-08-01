@@ -1,0 +1,4 @@
+nmap
+metasploit
+aircrack-ng
+

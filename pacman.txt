@@ -3,3 +3,4 @@ i3blocks
 i3status
 greenclip
 mpv
+feh
