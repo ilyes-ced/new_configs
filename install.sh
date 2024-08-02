@@ -7,11 +7,11 @@
 ############################################
 ############################################
 ############################################
-sudo pacman -S archlinux-keyring --noconfirm
 sudo pacman -Syu --noconfirm
+sudo pacman -S archlinux-keyring --noconfirm
 # needed to isntall vecodium at the time of writing this
 sudo pacman -S debugedit --noconfirm
-mkdir Repos Installs Projects
+mkdir ~/Repos ~/Installs ~/Projects
 
 
 
@@ -26,11 +26,7 @@ mkdir Repos Installs Projects
 pacman_packages="pacman.txt"
 
 echo "Installing pacman packages from the list..."
-while read -r package; do
-    echo "Installing $package..."
-    sudo pacman -S --noconfirm "$package"
-done < "$package_list_file"
-
+sudo pacman -S --noconfirm i3-wm i3blocks i3status mpv feh
 echo "All pacman packages installed successfully!"
 
 
@@ -49,11 +45,7 @@ echo "All pacman packages installed successfully!"
 yay_packages="yay.txt"
 
 echo "Installing yay packages from the list..."
-while read -r package; do
-    echo "Installing $package..."
-    yay -S --noconfirm "$package"
-done < "$package_list_file"
-
+yay -S --noconfirm vscodium brave floorp-bin greenclip
 echo "All yay packages installed successfully!"
 
 
@@ -87,19 +79,27 @@ sudo bash ./sos-firefoxprivacy.sh
 ############################################
 ############################################
 ############################################
+extensions=(
+    "GitHub.github-vscode-theme"
+    "naumovs.color-highlight"
+    "PKief.material-icon-theme"
+    "rust-lang.rust-analyzer"
+    "tamasfe.even-better-toml"
+    "serayuzgur.crates"
+    "ms-vscode.vscode-typescript-next"
+    "aaron-bond.better-comments"
+    "pranaygp.vscode-css-peek"
+    "streetsidesoftware.code-spell-checker"
+    "yzhang.markdown-all-in-one"
+)
 
-vscodium_extentions="vscodium_extentions.txt"
+# Loop through the array and install each extension
+for extension in "${extensions[@]}"; do
+    echo "Installing $extension..."
+    codium --install-extension "$extension"
+done
 
-# Loop through the extensions and install them
-while read extension; do
-  codium --install-extension "$extension"
-done < "$extensions_file"
-
-echo "Extensions installed successfully!"
-
-# set the config file
-cp vscodium/settings.json ~/.config/VSCodium/User/settings.json
-
+echo "All extensions have been installed."
 
 
 
@@ -142,16 +142,16 @@ fi
 
 
 # installing eww
-cd ~/Repos 
-git clone https://github.com/elkowar/eww  --depth 1
-cd eww
-cargo build --release --no-default-features --features x11
-cp target/release/eww ~/Installs
-cd ~/Installs
-chmod +x ./eww
-mkdir ~/.config/eww
-./eww daemon
-./eww open <window_name>
+#cd ~/Repos
+#git clone https://github.com/elkowar/eww  --depth 1
+#cd eww
+#cargo build --release --no-default-features --features x11
+#cp target/release/eww ~/Installs
+#cd ~/Installs
+#chmod +x ./eww
+#mkdir ~/.config/eww
+#./eww daemon
+#./eww open <window_name>
 
 
 
@@ -220,7 +220,7 @@ git config --global user.email "random_dude_233@proton.me"
 # sudo make install clean ~/new_configs/suckless/st/
 
 
-# maybe add eww for dwm or hyprland 
+# maybe add eww for dwm or hyprland
 # set desktop keyboard map to fr
 
 # add some tweakks to hyprdots
@@ -238,7 +238,7 @@ git config --global user.email "random_dude_233@proton.me"
 
 
 # add i3 configs
-sudo cp -r i3/* ~/.config
+cp -r i3/* ~/.config
 
 
 
@@ -269,7 +269,7 @@ sudo cp -r i3/* ~/.config
 ## sudo ./strap.sh
 ## # NOTE: could fail
 ## sudo pacman -Syu --noconfirm
-## 
+##
 
 
 
@@ -281,7 +281,7 @@ curl -L https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-m
 sudo unzip mocha.zip -d /usr/share/sddm/themes/
 
 # turn numlock on
-FILE="/etc/sddm.conf" 
+FILE="/etc/sddm.conf"
 sudo sed -i 's/Numlock=off/Numlock=on/' "$FILE"
 if [ $? -eq 0 ]; then
     echo "Successfully changed Numlock=off to Numlock=on in $FILE"
@@ -329,5 +329,6 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 
 # finished and delete all tempo files
-cd ~/Repos 
-sudo rm *rf *
+cd ~/Repos
+sudo rm -rf *
+cd
