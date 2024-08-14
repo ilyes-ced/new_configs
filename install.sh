@@ -26,7 +26,7 @@ mkdir ~/Repos ~/Installs ~/Projects
 pacman_packages="pacman.txt"
 
 echo "Installing pacman packages from the list..."
-sudo pacman -S --noconfirm i3-wm i3blocks i3status mpv feh
+sudo pacman -S --noconfirm i3-wm i3blocks i3status mpv feh neovim
 echo "All pacman packages installed successfully!"
 
 
@@ -80,6 +80,7 @@ cd
 ############################################
 ############################################
 extensions=(
+    "chunsen.bracket-select"
     "GitHub.github-vscode-theme"
     "naumovs.color-highlight"
     "PKief.material-icon-theme"
@@ -126,6 +127,7 @@ echo "All extensions have been installed."
 ############################################
 # nvchad
 # note: also add ur configs for nvim later
+mkdir ~/.config/nvim
 git clone https://github.com/NvChad/starter ~/.config/nvim
 
 
@@ -325,7 +327,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 
 
+# add x11 config file for resolutions and refresh rates
 
+sudo cp xorg.conf /etc/X11/xorg.conf
 
 
 # finished and delete all tempo files
