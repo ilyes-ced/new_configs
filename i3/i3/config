@@ -327,5 +327,6 @@ exec_always --no-startup-id ~/.config/i3/scripts/i3_autostart
 
 
 exec_always --no-startup-id feh --bg-fill ~/new_configs/scripts/active/wallpaper
-exec_always --no-startup-id greenclip daemon
+## exec_always --no-startup-id greenclip daemon
+exec_always --no-startup-id copyq
 exec_always --no-startup-id setxkbmap fr
