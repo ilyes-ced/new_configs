@@ -1,15 +1,15 @@
-set $base #16161e
-set $text #787c99
+set $base #191724
+set $text #e0def4
 
 
-set $color0 #363b54
-set $color1 #f7768e
-set $color2 #73daca
-set $color3 #e0af68
-set $color4 #7aa2f7
-set $color5 #bb9af7
-set $color6 #7dcfff
-set $color7 #787c99
+set $color0 #26233a
+set $color1 #eb6f92
+set $color2 #31748f
+set $color3 #f6c177
+set $color4 #9ccfd8
+set $color5 #c4a7e7
+set $color6 #ebbcba
+set $color7 #e0def4
 
 
 

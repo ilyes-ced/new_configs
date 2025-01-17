@@ -26,7 +26,7 @@ mkdir ~/Repos ~/Installs ~/Projects
 pacman_packages="pacman.txt"
 
 echo "Installing pacman packages from the list..."
-sudo pacman -S --noconfirm i3-wm i3blocks i3status mpv feh neovim
+sudo pacman -S --noconfirm i3-wm i3blocks i3status mpv feh neovim playerctl
 echo "All pacman packages installed successfully!"
 
 
