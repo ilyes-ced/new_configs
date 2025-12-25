@@ -82,10 +82,7 @@ fn process_pywal(args: Vec<String>) {
         std::process::exit(1)
     };
 
-    println!(
-        "for pywal selected\n\twall:{}\n\tback:{}",
-        wallpaper_path, backend
-    );
+    println!("for pywal selected\n\twall:{}\n\tback:{}", wallpaper_path, backend);
 
     // apparantly putting the entire command in a string doesnt work yopu need to put each part of the command in an .arg
     //let output = Command::new(format!("wal --backend {} -i {} && ~/new_configs/scripts/target/release/gtk_theme", backend, wallpaper_path))
@@ -114,7 +111,6 @@ fn process_pywal(args: Vec<String>) {
     // here we do the templating with the aquired theme ~/.cache/wal/colors.json
     pywal_json_to_json();
     templating::template(None).unwrap();
-
 
     // println!("setting the gtk themes\n");
     // gtk_theme::main();
@@ -148,19 +144,9 @@ fn decide_wallpaper(wallpaper: &String) -> String {
         let files = fs::read_dir("~/Pictures/wallpapers/").unwrap();
         let file = files.choose(&mut rng).unwrap().unwrap();
 
-        String::from_utf8_lossy(
-            &[
-                b"~/Pictures/wallpapers/",
-                file.file_name().as_bytes(),
-            ]
-            .concat(),
-        )
-        .to_string()
+        String::from_utf8_lossy(&[b"~/Pictures/wallpapers/", file.file_name().as_bytes()].concat()).to_string()
     } else {
-        let wall_path: String = String::from_utf8_lossy(
-            &[b"~/Pictures/wallpapers/", wallpaper.as_bytes()].concat(),
-        )
-        .to_string();
+        let wall_path: String = String::from_utf8_lossy(&[b"~/Pictures/wallpapers/", wallpaper.as_bytes()].concat()).to_string();
         if Path::new(&wall_path).exists() {
             wall_path
         } else {
@@ -221,41 +207,23 @@ fn decide_theme_name(theme_name: &str) -> String {
     if theme_name == "random" {
         //select random theme
         let mut rng = rand::thread_rng();
-        let file = if THEME_DIR == "favs"{
+        let file = if THEME_DIR == "favs" {
             let files = fs::read_dir("~/new_configs/scripts/themes/favs/").unwrap();
             files.choose(&mut rng).unwrap().unwrap()
-        }else if THEME_DIR == "favs"{
+        } else if THEME_DIR == "favs" {
             let files = fs::read_dir("~/new_configs/scripts/themes/json/").unwrap();
             files.choose(&mut rng).unwrap().unwrap()
-        }else{
+        } else {
             println!("wrong THEME_DIR",);
             std::process::exit(1)
         };
-        String::from_utf8_lossy(
-            &[
-                b"~/new_configs/scripts/themes/json/",
-                file.file_name().as_bytes(),
-            ]
-            .concat(),
-        )
-        .to_string()
+        String::from_utf8_lossy(&[b"~/new_configs/scripts/themes/json/", file.file_name().as_bytes()].concat()).to_string()
     } else {
-        let theme = String::from_utf8_lossy(
-            &[
-                b"~/new_configs/scripts/themes/json/",
-                theme_name.as_bytes(),
-                b".json",
-            ]
-            .concat(),
-        )
-        .to_string();
+        let theme = String::from_utf8_lossy(&[b"~/new_configs/scripts/themes/json/", theme_name.as_bytes(), b".json"].concat()).to_string();
         if Path::new(&theme).exists() {
             return theme;
         } else {
-            println!(
-                "selected theme is unavaillable please select a valid theme:: {}",
-                theme
-            );
+            println!("selected theme is unavaillable please select a valid theme:: {}", theme);
             std::process::exit(1)
         }
     }
@@ -285,10 +253,7 @@ fn process_custom(args: Vec<String>) {
         //std::process::exit(1)
     };
 
-    println!(
-        "for custom selected\n\twall:{:?}\n\tback:{:?}",
-        wallpaper_path, theme_name
-    );
+    println!("for custom selected\n\twall:{:?}\n\tback:{:?}", wallpaper_path, theme_name);
 
     //set themes here
     templating::template(Some(theme_name)).unwrap();
@@ -299,23 +264,15 @@ fn process_custom(args: Vec<String>) {
     //copy the selected theme to pywal cache
 }
 
-
 fn set_wallpaper(wallpaper_path: Option<String>) {
     match wallpaper_path {
         Some(path) => {
-            let output = Command::new("rm")
-                .arg("~/new_configs/scripts/themes/active/wallpaper")
-                .output()
-                .expect("Failed to execute command");
+            let output = Command::new("rm").arg("~/new_configs/scripts/themes/active/wallpaper").output().expect("Failed to execute command");
             println!("status: {}", output.status);
             println!("stdout:\n{}", String::from_utf8_lossy(&output.stdout));
             println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
 
-            let output = Command::new("ln")
-                .arg(path)
-                .arg("~/new_configs/scripts/themes/active/wallpaper")
-                .output()
-                .expect("Failed to execute command");
+            let output = Command::new("ln").arg(path).arg("~/new_configs/scripts/themes/active/wallpaper").output().expect("Failed to execute command");
             println!("status: {}", output.status);
             println!("stdout:\n{}", String::from_utf8_lossy(&output.stdout));
             println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
@@ -345,4 +302,3 @@ fn make_bright(color: &str) -> Result<String, ()> {
 
     Ok(String::from(format!("#{:x}{:x}{:x}", r_brt, g_brt, b_brt)))
 }
-

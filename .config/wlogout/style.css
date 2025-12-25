@@ -1,0 +1,28 @@
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(30, 30, 46, 0.90);
+}
+
+button {
+	border-radius: 0;
+	border-color: #c1c2c3;
+	text-decoration-color: #c1c2c3;
+	color: #c1c2c3;
+	background-color: #070d10;
+	border-style: solid;
+	border-width: 1px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+    margin: 10px
+}
+
+button:focus, button:active, button:hover {
+	/* 20% Overlay 2, 80% mantle */
+	background-color: rgb(48, 50, 66);
+	outline-style: none;
+}

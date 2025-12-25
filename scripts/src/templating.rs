@@ -9,8 +9,6 @@ use std::{
     io::Write,
 };
 
-
-
 /////////////////////////////////
 /////////////////////////////////
 /////////////////////////////////
@@ -19,17 +17,11 @@ use std::{
 /////////////////////////////////
 /////////////////////////////////
 
-
-
-
 pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
     // reads files from themes/json and create all the color scheme files for alacritty i3 polybar ......
     let json_values = match theme_name {
         Some(name) => read_scheme_json(&Path::new(&name)).unwrap(),
-        None => read_scheme_json(&Path::new(
-            "~/new_configs/scripts/themes/active/active.json",
-        ))
-        .unwrap(),
+        None => read_scheme_json(&Path::new("~/new_configs/scripts/themes/active/active.json")).unwrap(),
     };
     // let _ = create_json(&json_values).unwrap();
     // let _ = create_alacritty(&json_values).unwrap();
@@ -40,7 +32,7 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
     // let _ = create_zellij(&json_values).unwrap();
     // let _ = create_dunstrc(&json_values).unwrap();
     // let _ = create_dunstrc(&json_values).unwrap();
-    
+
     let template_path = env::var("CONFIG_PATH").unwrap_or_else(|_| {
         let home = home::home_dir().unwrap();
         home.join("new_configs/scripts/templates/").to_string_lossy().into_owned()
@@ -59,16 +51,8 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
     let _ = create_file(&json_values, format!("{}{}", template_path, "config.kdl"), format!("{}{}", results_path, "config.kdl")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "dunstrc"), format!("{}{}", results_path, "dunstrc")).unwrap();
 
-    
-    
-    
-    
-    
-    
-    
     Ok(())
 }
-
 
 fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dyn Error>> {
     let reg = Handlebars::new();
@@ -101,8 +85,6 @@ fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dy
     file.write_all(new_json.as_bytes()).unwrap();
     Ok(())
 }
-
-
 
 fn read_scheme_json(path: &Path) -> Result<Value, ()> {
     let binding = read_to_string(&path).unwrap();

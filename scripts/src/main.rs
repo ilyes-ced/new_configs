@@ -1,25 +1,6 @@
-use handlebars::Handlebars;
-use rand::seq::{IteratorRandom, SliceRandom};
-use serde_json::{from_str, json, Value};
-use std::{
-    env,
-    fs::{self, read_to_string, File},
-    io::Write,
-    os::unix::prelude::OsStrExt,
-    path::Path,
-    process::Command,
-};
-
-use home::home_dir;
-
-
-// can be "all" or "favs"
-// favs for my faviourt themes and all for all
-const THEME_DIR: &str = "favs";
-const BRIGHTER_VALUE: i64 = 30;
+use std::{env, path::Path, process::Command};
 
 mod templating;
-
 
 const MESSAGE: &str = "
     --theme_name=<name of theme in setup/scripts/json | random>
@@ -37,10 +18,7 @@ fn main() {
     process_theme(args);
 }
 
-
 fn process_theme(args: Vec<String>) {
-
-    
     let theme_name = if &args[1][..12] == "--theme_name" {
         decide_theme(args[1].split("=").last().unwrap())
     } else if &args[2][..12] == "--theme_name" {
@@ -63,19 +41,12 @@ fn process_theme(args: Vec<String>) {
         std::process::exit(1)
     };
 
-    println!(
-        "for custom selected\n\twall:{:?}\n\tback:{:?}",
-        wallpaper_path, theme_name
-    );
+    println!("for custom selected\n\twall:{:?}\n\tback:{:?}", wallpaper_path, theme_name);
 
     //set themes here
     templating::template(Some(theme_name)).unwrap();
     set_wallpaper(wallpaper_path);
 }
-
-
-
-
 
 fn decide_theme(theme_name: &str) -> String {
     let config_path = env::var("CONFIG_PATH").unwrap_or_else(|_| {
@@ -83,40 +54,25 @@ fn decide_theme(theme_name: &str) -> String {
         home.join("new_configs/themes/").to_string_lossy().into_owned()
     });
 
-    let theme = String::from_utf8_lossy(
-        &[config_path.to_string().as_bytes(), theme_name.as_bytes()]
-            .concat()).to_string();
-    
+    let theme = String::from_utf8_lossy(&[config_path.to_string().as_bytes(), theme_name.as_bytes()].concat()).to_string();
+
     println!("{}", theme);
 
     if Path::new(&theme).exists() {
         return theme;
     } else {
-        println!(
-            "selected theme is unavaillable please select a valid theme: {}",
-            theme
-        );
+        println!("selected theme is unavaillable please select a valid theme: {}", theme);
         std::process::exit(1)
     }
-
 }
-
-
-
-
-
-
 
 fn decide_wallpaper(wallpaper: &str) -> String {
     let config_path = env::var("CONFIG_PATH").unwrap_or_else(|_| {
         let home = home::home_dir().unwrap();
         home.join("Pictures/wallpapers/").to_string_lossy().into_owned()
     });
-    
-    let wall_path: String = String::from_utf8_lossy(
-        &[config_path.as_bytes(), wallpaper.as_bytes()].concat(),
-    )
-    .to_string();
+
+    let wall_path: String = String::from_utf8_lossy(&[config_path.as_bytes(), wallpaper.as_bytes()].concat()).to_string();
 
     if Path::new(&wall_path).exists() {
         wall_path
@@ -126,29 +82,18 @@ fn decide_wallpaper(wallpaper: &str) -> String {
     }
 }
 
-
-
-
-
 fn set_wallpaper(wallpaper_path: String) {
     let wall_path = env::var("CONFIG_PATH").unwrap_or_else(|_| {
         let home = home::home_dir().unwrap();
         home.join("new_configs/scripts/active/wallpaper").to_string_lossy().into_owned()
     });
 
-    let output = Command::new("rm")
-        .arg(&wall_path)
-        .output()
-        .expect("Failed to execute command");
+    let output = Command::new("rm").arg(&wall_path).output().expect("Failed to execute command");
     println!("status: {}", output.status);
     println!("stdout:\n{}", String::from_utf8_lossy(&output.stdout));
     println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
 
-    let output = Command::new("ln")
-        .arg(wallpaper_path)
-        .arg(&wall_path)
-        .output()
-        .expect("Failed to execute command");
+    let output = Command::new("ln").arg(wallpaper_path).arg(&wall_path).output().expect("Failed to execute command");
     println!("status: {}", output.status);
     println!("stdout:\n{}", String::from_utf8_lossy(&output.stdout));
     println!("stderr: {}", String::from_utf8_lossy(&output.stderr));

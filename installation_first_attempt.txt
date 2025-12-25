@@ -1,0 +1,183 @@
+enabling multilib in pacman.d
+sudo pacman -S go git base-devel
+installing yay with makepkg -i
+sudo pacman -S nvidia nvidia-utils nvidia-settings (installation intsructions are best in the hyprland wiki)
+
+
+# brave alone takes way too long it installs chromium with like 25GiB of space
+yay -S --noconfirm --needed brave-bin
+
+
+
+sudo pacman -S playerctl
+
+
+must learn how to automate the password with bash
+
+
+# prompts for the drivers i thin we must use the 2) lib32-nvidia-utils
+# maybe we can install it above with the rest
+sudo pacman -S steam
+
+
+sudo pacman -S wine wine-mono wine-gecko
+
+
+
+# jsut like steam it asks for dependencies we choose 5) xdg-desktop-portal-hyprland
+sudo pacman -S lutris 
+
+# floorp fix when fullscreen the topbar hides
+yay -S floorp-bin zen-browser-bin
+
+
+# might need to be started with hyprland 
+sudo pacman -S udiskie
+
+yay -S vscodium-bin
+
+
+
+# lutris doesnt install my games  this could fix it after reboot
+sudo pacman -S winetricks lib32-libpulse
+# after reboot the error changed so it did something
+
+
+
+
+
+
+
+
+# doesnt work
+sudo pacman -S rustup
+# the onyl option is to automate this one 
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# option1 : 1
+
+
+
+sudo pacman -S zsh
+# make zsh default requires password
+chsh -s $(which zsh)
+# a restart is required here or at least a logout
+
+# ohmyzsh needs curl or wget
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# prompts with y/n to make zsh default
+
+
+# install autosuggestion and sytaxhightlithg
+
+# suggestions:
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# syntax highlith
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+
+
+#add them to plugins
+# zsh-autosuggestions
+# zsh-syntax-highlighting
+i
+
+
+# install atuin
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
+# still have some display issues slightly fixed with 
+sudo pacman -S ttf-jetbrains-mono
+
+
+# zelij
+cargo install --locked zellij
+echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
+
+
+
+
+
+
+
+# for nerd font + japanese
+sudo pacman -Syu ttf-jetbrains-mono-nerd adobe-source-han-sans-jp-fonts 
+# for arabic font 
+ yay -S noto-fonts-ar
+# this one doesnt work but might be needed for the next one
+ # this one works https://www.baeldung.com/linux/configure-multilingual-fonts
+ nvim .config/fontconfig/fonts.conf
+ <?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+  <!-- Defaults -->
+  <alias>
+    <family>serif</family>
+    <prefer>
+      <family>Noto Serif</family>
+      <family>Noto Sans Arabic</family>
+      <family>Joy Pixels</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>sans-serif</family>
+    <prefer>
+      <family>Noto Sans</family>
+      <family>Noto Sans Arabic</family>
+      <family>Fira Sans</family>
+      <family>Joy Pixels</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>sans</family>
+    <prefer>
+      <family>Noto Sans</family>
+      <family>Noto Sans Arabic</family>
+      <family>Fira Sans</family>
+      <family>Joy Pixels</family>
+    </prefer>
+  </alias>
+  <alias>
+    <family>monospace</family>
+    <prefer>
+      <family>Cascadia Code</family>
+      <family>Noto Sans Mono</family>
+      <family>Joy Pixels</family>
+    </prefer>
+  </alias>
+</fontconfig>
+
+
+
+
+
+
+
+
+
+
+sudo pacman -S grim hyprpicker cliphist 
+yay -S wlogout
+
+
+
+
+
+
+
+git config user.email ""
+git config user.name ""
+
+
+
+
+
+
+
+
+# hyprland plugins
+# deps
+sudo pacman -S cmake meson cpio
+hyprpm update
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm enable hyprexpo
