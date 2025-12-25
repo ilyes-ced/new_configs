@@ -41,7 +41,12 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S archlinux-keyring --noconfirm
 # needed to isntall vecodium at the time of writing this
 sudo pacman -S debugedit --noconfirm
-mkdir ~/Repos ~/Installs ~/Projects
+
+
+for dir in ~/Repos ~/Installs ~/Projects; do
+  [ -d "$dir" ] || mkdir "$dir"
+done
+
 
 
 
@@ -72,8 +77,17 @@ fi
 # else
 #   echo "Skipping gaming tools."
 # fi
+#? needs to enable multilib
+# enabling multilib
+
+
 if ask "Install gaming tools (Steam, Wine, Lutris)?"; then
-    sudo pacman -S --needed --noconfirm wine wine-mono wine-gecko winetricks lib32-libpulse steam lutris
+  if grep -q '^\s*#\s*\[multilib\]' /etc/pacman.conf; then
+    sudo sed -i '/^\s*#\s*\[multilib\]/,/^\s*#\s*Include/ {
+      s/^\s*#\s*//
+    }' /etc/pacman.conf
+  fi
+  sudo pacman -Syu --needed --noconfirm wine wine-mono wine-gecko winetricks lib32-libpulse steam lutris
 else
     echo "Skipping gaming tools."
 fi
