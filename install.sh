@@ -149,7 +149,13 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 
 echo "adding the plugins to the config file"
-sed -i 's/^plugins=( *git *).*$/plugins=( git zsh-autosuggestions zsh-syntax-highlighting )/' ~/.zshrc
+ZSHRC="$HOME/.zshrc"
+PLUGINS_TO_ADD=(zsh-autosuggestions zsh-syntax-highlighting)
+for plugin in "${PLUGINS_TO_ADD[@]}"; do
+  if ! grep -q "plugins=.*\b$plugin\b" "$ZSHRC"; then
+    sed -i "/^plugins=(/ s/)/ $plugin)/" "$ZSHRC"
+  fi
+done
 echo "plugins=(... zsh-autosuggestions zsh-syntax-highlighting)"
 
 
