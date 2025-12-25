@@ -42,14 +42,12 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
         home.join("new_configs/scripts/active/").to_string_lossy().into_owned()
     });
 
-    let _ = create_file(&json_values, format!("{}{}", template_path, "json.json"), format!("{}{}", results_path, "active.json")).unwrap();
-    let _ = create_file(&json_values, format!("{}{}", template_path, "alacritty.toml"), format!("{}{}", results_path, "alacritty.toml")).unwrap();
-    let _ = create_file(&json_values, format!("{}{}", template_path, "colors.ini"), format!("{}{}", results_path, "colors.ini")).unwrap();
-    let _ = create_file(&json_values, format!("{}{}", template_path, "rofi.rasi"), format!("{}{}", results_path, "rofi.rasi")).unwrap();
-    let _ = create_file(&json_values, format!("{}{}", template_path, "colors"), format!("{}{}", results_path, "colors")).unwrap();
-    let _ = create_file(&json_values, format!("{}{}", template_path, "bar_config"), format!("{}{}", results_path, "bar_config")).unwrap();
-    let _ = create_file(&json_values, format!("{}{}", template_path, "config.kdl"), format!("{}{}", results_path, "config.kdl")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "dunstrc"), format!("{}{}", results_path, "dunstrc")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "waybar.css"), format!("{}{}", results_path, "waybar.css")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "wlogout.css"), format!("{}{}", results_path, "wlogout.css")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "rofi.rasi"), format!("{}{}", results_path, "rofi.rasi")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "starship.toml"), format!("{}{}", results_path, "starship.toml")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "zellij.kdl"), format!("{}{}", results_path, "zellij.kdl")).unwrap();
 
     Ok(())
 }

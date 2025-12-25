@@ -217,12 +217,12 @@ git config --global user.email "random_dude_233@proton.me"
 ############################################
 ############################################
 ############################################
-cd ~/Repos
-git clone https://github.com/simeononsecurity/FireFox-Privacy-Script --depth 1
-cd FireFox-Privacy-Script
-sudo chmod +x ./sos-firefoxprivacy.sh
-sudo bash ./sos-firefoxprivacy.sh
-cd
+# cd ~/Repos
+# git clone https://github.com/simeononsecurity/FireFox-Privacy-Script --depth 1
+# cd FireFox-Privacy-Script
+# sudo chmod +x ./sos-firefoxprivacy.sh
+# sudo bash ./sos-firefoxprivacy.sh
+# cd
 
 
 
