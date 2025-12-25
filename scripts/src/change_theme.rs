@@ -289,25 +289,26 @@ fn set_wallpaper(wallpaper_path: Option<String>) {
         None => {}
     }
 }
-
-fn make_bright(color: &str) -> Result<String, ()> {
-    let r = &color[1..3];
-    let g = &color[3..5];
-    let b = &color[5..7];
-    //println!("{} {} {}",r,g,b);
-    let mut r_brt = i64::from_str_radix(r, 16).unwrap() + (BRIGHTER_VALUE);
-    let mut g_brt = i64::from_str_radix(g, 16).unwrap() + (BRIGHTER_VALUE);
-    let mut b_brt = i64::from_str_radix(b, 16).unwrap() + (BRIGHTER_VALUE);
-    if r_brt > 255 {
-        r_brt = 255;
-    }
-    if g_brt > 255 {
-        g_brt = 255;
-    }
-    if b_brt > 255 {
-        b_brt = 255;
-    }
-    //println!("result !::::: {}", String::from(format!("{:x}{:x}{:x}", r_brt, g_brt, b_brt)));
-
-    Ok(String::from(format!("#{:x}{:x}{:x}", r_brt, g_brt, b_brt)))
-}
+//
+// fn make_bright(color: &str) -> Result<String, ()> {
+//     let r = &color[1..3];
+//     let g = &color[3..5];
+//     let b = &color[5..7];
+//     //println!("{} {} {}",r,g,b);
+//     let mut r_brt = i64::from_str_radix(r, 16).unwrap() + (BRIGHTER_VALUE);
+//     let mut g_brt = i64::from_str_radix(g, 16).unwrap() + (BRIGHTER_VALUE);
+//     let mut b_brt = i64::from_str_radix(b, 16).unwrap() + (BRIGHTER_VALUE);
+//     if r_brt > 255 {
+//         r_brt = 255;
+//     }
+//     if g_brt > 255 {
+//         g_brt = 255;
+//     }
+//     if b_brt > 255 {
+//         b_brt = 255;
+//     }
+//     //println!("result !::::: {}", String::from(format!("{:x}{:x}{:x}", r_brt, g_brt, b_brt)));
+//
+//     Ok(String::from(format!("#{:x}{:x}{:x}", r_brt, g_brt, b_brt)))
+// }
+//
