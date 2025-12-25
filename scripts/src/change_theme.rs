@@ -22,7 +22,7 @@ const MESSAGE: &str = "
         pywal:
             --backend=<wal|colorz|colorthief|random>
             --wallpaper=<image name in the path ~/Pictures/wallpapers | random>
-        custom
+        custom:
             --theme_name=<name of theme in setup/scripts/json | random>
             --wallpaper=<image name in the path ~/Pictures/wallpapers | random | none>
 ";

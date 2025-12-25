@@ -1,4 +1,34 @@
 #!/bin/bash
+set -e
+
+
+
+if ! command -v sudo &>/dev/null; then
+  echo "sudo not found. Install sudo first."
+  exit 1
+fi
+
+echo "Make sure multilib is enabled in /etc/pacman.conf before continuing."
+read -rp "Press ENTER to continue or Ctrl+C to abort..."
+
+
+
+
+# install yay
+if ! command -v yay &>/dev/null; then
+  echo "Installing yay..."
+  git clone https://aur.archlinux.org/yay.git /tmp/yay
+  (cd /tmp/yay && makepkg -si --noconfirm)
+  rm -rf /tmp/yay
+fi
+
+
+ask() {
+  local prompt="$1"
+  read -rp "$prompt [y/N]: " reply
+  [[ "$reply" =~ ^[Yy]$ ]]
+}
+
 
 ############################################
 ############################################
@@ -22,15 +52,31 @@ mkdir ~/Repos ~/Installs ~/Projects
 ############################################
 ############################################
 ############################################
-# Path to the package list file
-pacman_packages="pacman.txt"
-
-echo "Installing pacman packages from the list..."
-sudo pacman -S --noconfirm i3-wm i3blocks i3status mpv feh neovim playerctl
+echo "Installing pacman packages ..."
+sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd adobe-source-han-sans-jp-fonts fastfetch neofetch bat waybar gtk-engine-murrine pythom-pywal python-colorthief 
 echo "All pacman packages installed successfully!"
 
 
 
+# nvidia stuff
+if ask "Install Nvidia drivers?"; then
+    sudo pacman -S --needed --noconfirm nvidia lib32-nvidia-utils nvidia-utils nvidia-settings
+else
+    echo "Skipping nvidia drivers."
+fi
+
+# gaming stuff
+# read -rp "Install gaming tools (Steam, Wine, Lutris, etc.)? [y/N]: " install_gaming
+# if [[ "$install_gaming" =~ ^[Yy]$ ]]; then
+#     sudo pacman -S --needed --noconfirm wine wine-mono wine-gecko winetricks lib32-libpulse steam lutris
+# else
+#   echo "Skipping gaming tools."
+# fi
+if ask "Install gaming tools (Steam, Wine, Lutris)?"; then
+    sudo pacman -S --needed --noconfirm wine wine-mono wine-gecko winetricks lib32-libpulse steam lutris
+else
+    echo "Skipping gaming tools."
+fi
 
 
 
@@ -41,15 +87,104 @@ echo "All pacman packages installed successfully!"
 ############################################
 ############################################
 ############################################
-# Path to the package list file
-yay_packages="yay.txt"
-
 echo "Installing yay packages from the list..."
-yay -S --noconfirm vscodium brave floorp-bin copyq #greenclip 
+yay -S --needed --noconfirm brave-bin copyq floorp-bin zen-browser-bin vscodium-bin wlogout noto-fonts-ar
 echo "All yay packages installed successfully!"
 
 
 
+
+
+### ================================
+### rust install
+### ================================
+if ! command -v rustc &>/dev/null; then
+  echo "Installing Rust..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    . "$HOME/.cargo/env"
+fi
+
+
+
+
+
+### ================================
+### ZSH + OH-MY-ZSH
+### ================================
+if [[ "$SHELL" != *zsh ]]; then
+  echo "Changing default shell to zsh (password required)"
+  chsh -s "$(which zsh)"
+fi
+
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+  echo "Installing Oh My Zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+
+
+
+### ================================
+### ZSH PLUGINS
+### ================================
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+
+echo "adding the plugins to the config file"
+sed -i 's/^plugins=( *git *).*$/plugins=( git zsh-autosuggestions zsh-syntax-highlighting )/' ~/.zshrc
+echo "plugins=(... zsh-autosuggestions zsh-syntax-highlighting)"
+
+
+
+### ================================
+### starship
+### ================================
+curl -sS https://starship.rs/install.sh | sh
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+
+
+
+
+### ================================
+### ATUIN
+### ================================
+if ! command -v atuin &>/dev/null; then
+  echo "Installing atuin..."
+  curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+  echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
+fi
+
+### ================================
+### ZELLIJ
+### ================================
+if ! command -v cargo &>/dev/null; then
+  echo "Rust not fully installed yet."
+  echo "Run rustup manually if needed."
+else
+  cargo install --locked zellij || true
+  echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
+fi
+
+
+
+
+
+
+### ================================
+### GIT CONFIG
+### ================================
+# echo "Configure git:"
+# read -rp "Git email: " GIT_EMAIL
+# read -rp "Git name: " GIT_NAME
+# 
+# git config --global user.email "$GIT_EMAIL"
+# git config --global user.name "$GIT_NAME"
+git config --global user.name "ilyes-ced"
+git config --global user.email "random_dude_233@proton.me"
 
 
 
@@ -100,239 +235,16 @@ for extension in "${extensions[@]}"; do
     codium --install-extension "$extension"
 done
 
+
+
+
+
+
+echo "Copying config files . . ."
+cp -a .config/. ~/.config/
+echo "Finished copying config files . . ."
+
+
+
+
 echo "All extensions have been installed."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-############################################
-############################################
-############################################
-# misc
-############################################
-############################################
-############################################
-# nvchad
-# note: also add ur configs for nvim later
-mkdir ~/.config/nvim
-git clone https://github.com/NvChad/starter ~/.config/nvim
-
-
-
-# installing rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-. "$HOME/.cargo/env"
-if command -v rustc &> /dev/null; then
-    echo "Rust installed successfully!"
-    rustc --version
-else
-    echo "Rust installation failed."
-fi
-
-
-# installing eww
-#cd ~/Repos
-#git clone https://github.com/elkowar/eww  --depth 1
-#cd eww
-#cargo build --release --no-default-features --features x11
-#cp target/release/eww ~/Installs
-#cd ~/Installs
-#chmod +x ./eww
-#mkdir ~/.config/eww
-#./eww daemon
-#./eww open <window_name>
-
-
-
-# installing zsh extentions x2
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-sed -i '/^plugins=(/ s/plugins=(\([^)]*\))/plugins=(\1 zsh-syntax-highlighting zsh-autosuggestions)/' .zshrc
-# pokemon scripts for zsh
-cd ~/Repos
-git clone https://gitlab.com/phoneybadger/pokemon-colorscripts.git  --depth 1
-cd pokemon-colorscripts
-sudo ./install.sh
-echo "pokemon-colorscripts -r" >> ~/.zshrc
-
-
-
-# installing atuin
-curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
-echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
-
-
-
-
-# installing zellij
-mkdir ~/.config/zellij
-cargo install --locked zellij
-echo 'eval "$(zellij setup --generate-auto-start zsh)"' >> ~/.zshrc
-
-
-
-# git username and email
-git config --global user.name "ilyes-ced"
-git config --global user.email "random_dude_233@proton.me"
-
-
-
-
-
-
-
-
-
-
-
-
-############################################
-############################################
-############################################
-# not needed i3 is enough for now
-############################################
-############################################
-############################################
-
-# add polybar
-# still not sure if i want to use it
-# sudo pacman -S polybar
-# mkdir ~/.config/polybar
-
-
-# add dwm + patches later
-
-# add dwm desktop
-# sudo cp dwm.desktop /usr/share/xsessions/
-# sudo make install clean ~/new_configs/suckless/dwm/
-# sudo make install clean ~/new_configs/suckless/dmenu/
-# sudo make install clean ~/new_configs/suckless/st/
-
-
-# maybe add eww for dwm or hyprland
-# set desktop keyboard map to fr
-
-# add some tweakks to hyprdots
-
-############################################
-############################################
-############################################
-
-
-
-
-
-
-
-
-
-# add i3 configs
-cp -r i3/* ~/.config
-cp vscodium/settings.json ~/.config/VSCodium/User/settings.json
-
-
-# add gtk themes
-
-
-
-# add firefox extentions
-
-
-# add option to save password and use it later
-# add option to select a WM or multiple
-
-
-
-
-
-
-
-
-
-# add blackarch repo + maybe most useful tools
-# causes too much problems do it later manually
-## cd ~/Repos
-## curl -O https://blackarch.org/strap.sh
-## echo 26849980b35a42e6e192c6d9ed8c46f0d6d06047 strap.sh | sha1sum -c
-## chmod +x strap.sh
-## sudo ./strap.sh
-## # NOTE: could fail
-## sudo pacman -Syu --noconfirm
-##
-
-
-
-
-
-# sddm theme
-cd ~/Repos
-curl -L https://github.com/catppuccin/sddm/releases/download/v1.0.0/catppuccin-mocha.zip > mocha.zip
-sudo unzip mocha.zip -d /usr/share/sddm/themes/
-
-# turn numlock on
-FILE="/etc/sddm.conf"
-sudo sed -i 's/Numlock=off/Numlock=on/' "$FILE"
-if [ $? -eq 0 ]; then
-    echo "Successfully changed Numlock=off to Numlock=on in $FILE"
-else
-    echo "Failed to modify the file."
-fi
-
-sudo sed -i '/\[Theme\]/a Current=catppuccin-mocha' "$FILE"
-if [ $? -eq 0 ]; then
-    echo "Successfully added 'Current=catppuccin-mocha' after '[Theme]' in $FILE"
-else
-    echo "Failed to modify the file."
-fi
-
-
-
-
-# /////////////////////////////////////////
-# /////////////////////////////////////////
-# /////////////////////////////////////////
-# NOTE: not tested yet
-# /////////////////////////////////////////
-# /////////////////////////////////////////
-# /////////////////////////////////////////
-# grub theme
-# cd ~/Repos
-# git clone https://github.com/catppuccin/grub.git && cd grub
-#sudo cp -r src/* /usr/share/grub/themes/
-#GRUB_THEME="/usr/share/grub/themes/catppuccin-mocha-grub-theme/theme.txt"
-
-#sudo sed -i "s|^GRUB_THEME=\".*\"|GRUB_THEME=\"$GRUB_THEME\"|" /etc/default/grub
-
-#if [ $? -eq 0 ]; then
-#    echo "GRUB_THEME updated successfully."
-#else
-#    echo "Failed to update GRUB_THEME."
-#fi
-# Update GRUB configuration
-#sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-
-
-
-# add x11 config file for resolutions and refresh rates
-
-sudo cp xorg.conf /etc/X11/xorg.conf
-
-
-# finished and delete all tempo files
-cd ~/Repos
-sudo rm -rf *
-cd
