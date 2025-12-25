@@ -273,3 +273,9 @@ echo "Finished copying config files . . ."
 
 
 echo "All extensions have been installed."
+
+
+
+# TODO: 
+#   greeter + enable greeter
+#   docker

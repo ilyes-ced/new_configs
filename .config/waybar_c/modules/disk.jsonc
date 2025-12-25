@@ -1,0 +1,9 @@
+{
+  "disk": {
+    "interval": 60,
+    // "format": "{specific_free:0.2f} GB / {specific_total:0.2f} GB | {free} / {total} 󰋊",
+    "format": "{free}/{total} 󰋊 ",
+    "unit": "GB"
+    // 0.25 GB out of 2000.00 GB available. Alternatively 241.3MiB out of 1.9TiB available.
+  }
+}
