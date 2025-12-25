@@ -53,7 +53,7 @@ mkdir ~/Repos ~/Installs ~/Projects
 ############################################
 ############################################
 echo "Installing pacman packages ..."
-sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd adobe-source-han-sans-jp-fonts fastfetch neofetch bat waybar gtk-engine-murrine pythom-pywal python-colorthief 
+sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd adobe-source-han-sans-jp-fonts fastfetch bat waybar python-pywal python-colorthief nvim 
 echo "All pacman packages installed successfully!"
 
 
