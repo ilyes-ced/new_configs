@@ -6,7 +6,7 @@ use std::{
     fs::{self, read_to_string, File},
     io::Write,
     os::unix::prelude::OsStrExt,
-    path::Path,
+    path::{Path, PathBuf},
     process::Command,
 };
 
@@ -82,7 +82,7 @@ fn process_pywal(args: Vec<String>) {
         std::process::exit(1)
     };
 
-    println!("for pywal selected\n\twall:{}\n\tback:{}", wallpaper_path, backend);
+    println!("for pywal selected\n\twall:{:?}\n\tback:{}", wallpaper_path, backend);
 
     // apparantly putting the entire command in a string doesnt work yopu need to put each part of the command in an .arg
     //let output = Command::new(format!("wal --backend {} -i {} && ~/new_configs/scripts/target/release/gtk_theme", backend, wallpaper_path))
@@ -91,6 +91,8 @@ fn process_pywal(args: Vec<String>) {
     let output = Command::new("wal")
         //.arg(format!("--backend {}", backend))
         .arg("-s")
+        .arg("--cols16")
+        .arg("dual")
         .arg("--backend")
         .arg(backend)
         .arg("-i")
@@ -98,6 +100,7 @@ fn process_pywal(args: Vec<String>) {
         .output()
         .expect("Failed to execute command");
 
+    println!("=======>>> wal command output");
     println!("status: {}", output.status);
     println!("stdout: {}", String::from_utf8_lossy(&output.stdout));
     println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
@@ -137,32 +140,40 @@ fn decide_backend(backend: &String) -> &'static str {
     }
 }
 
-fn decide_wallpaper(wallpaper: &String) -> String {
-    let wallpaper = wallpaper.split("=").last().unwrap();
+fn decide_wallpaper(wallpaper: &String) -> PathBuf {
+    let wallpaper = wallpaper.split('=').last().unwrap();
+    let home = home::home_dir().expect("Could not find home directory");
+    let wallpapers_dir = home.join("Pictures/wallpapers");
+
     if wallpaper == "random" {
         let mut rng = rand::thread_rng();
-        let files = fs::read_dir("~/Pictures/wallpapers/").unwrap();
-        let file = files.choose(&mut rng).unwrap().unwrap();
+        let files: Vec<_> = fs::read_dir(&wallpapers_dir).expect("Could not read wallpapers directory").filter_map(|e| e.ok()).collect();
 
-        String::from_utf8_lossy(&[b"~/Pictures/wallpapers/", file.file_name().as_bytes()].concat()).to_string()
+        let file = files.choose(&mut rng).expect("No files found in wallpapers directory");
+
+        file.path() // returns a PathBuf to the selected file
     } else {
-        let wall_path: String = String::from_utf8_lossy(&[b"~/Pictures/wallpapers/", wallpaper.as_bytes()].concat()).to_string();
-        if Path::new(&wall_path).exists() {
+        let wall_path = wallpapers_dir.join(wallpaper);
+        if wall_path.exists() {
             wall_path
         } else {
-            println!("image names doesnt exist choose a valid image");
-            std::process::exit(1)
+            eprintln!("Image does not exist. Choose a valid image.");
+            std::process::exit(1);
         }
     }
 }
 
 fn pywal_json_to_json() {
-    let binding = read_to_string("~/.cache/wal/colors.json").unwrap();
+    let home = home::home_dir().unwrap();
+    let colors_path = home.join(".cache/wal/colors.json").to_string_lossy().into_owned();
+    let binding = read_to_string(colors_path).unwrap();
     let colors = binding.as_str();
     let s: Value = from_str(colors).expect("JSON was not well-formatted");
 
     let reg = Handlebars::new();
-    let template = fs::read_to_string("~/new_configs/scripts/templates/json.json").unwrap();
+    // TODO: fix this pathing
+    let template_path = home.join("Documents/Projects/new_configs/scripts/templates/json.json").to_string_lossy().into_owned();
+    let template = fs::read_to_string(template_path).unwrap();
     println!("{:#?}", s["colors"]["color8"].as_str().unwrap());
     let new_json = reg
         .render_template(
@@ -199,11 +210,13 @@ fn pywal_json_to_json() {
             }),
         )
         .unwrap();
-    let mut file = File::create("~/new_configs/scripts/themes/active/active.json").unwrap();
+
+    let file_path = home.join("Documents/Projects/new_configs/scripts/themes/active/active.json").to_string_lossy().into_owned();
+    let mut file = File::create(file_path).unwrap();
     file.write_all(new_json.as_bytes()).unwrap();
 }
 
-fn custom_wallpaper_selection(wallpaper: &String) -> Option<String> {
+fn custom_wallpaper_selection(wallpaper: &String) -> Option<PathBuf> {
     let wall = wallpaper.split("=").last().unwrap();
     if wall == "none" {
         None
@@ -250,7 +263,7 @@ fn process_custom(args: Vec<String>) {
         std::process::exit(1)
     };
 
-    let wallpaper_path: Option<String> = if &args[1][..11] == "--wallpaper" {
+    let wallpaper_path: Option<PathBuf> = if &args[1][..11] == "--wallpaper" {
         custom_wallpaper_selection(&args[1])
     } else if &args[2][..11] == "--wallpaper" {
         custom_wallpaper_selection(&args[2])
@@ -273,15 +286,21 @@ fn process_custom(args: Vec<String>) {
     //copy the selected theme to pywal cache
 }
 
-fn set_wallpaper(wallpaper_path: Option<String>) {
+fn set_wallpaper(wallpaper_path: Option<PathBuf>) {
     match wallpaper_path {
         Some(path) => {
-            let output = Command::new("rm").arg("~/new_configs/scripts/themes/active/wallpaper").output().expect("Failed to execute command");
+            println!("=======>>> deleting old wallpaper");
+
+            let home = home::home_dir().expect("Could not find home directory");
+            let old_active_wallpaper = home.join("Documents/Projects/new_configs/scripts/themes/active/wallpaper");
+            let output = Command::new("rm").arg(old_active_wallpaper).output().expect("Failed to execute command");
             println!("status: {}", output.status);
             println!("stdout:\n{}", String::from_utf8_lossy(&output.stdout));
             println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
 
-            let output = Command::new("ln").arg(path).arg("~/new_configs/scripts/themes/active/wallpaper").output().expect("Failed to execute command");
+            println!("=======>>> linking new wallpaper");
+            let old_active_wallpaper = home.join("Documents/Projects/new_configs/scripts/themes/active/wallpaper");
+            let output = Command::new("ln").arg(path).arg(old_active_wallpaper).output().expect("Failed to execute command");
             println!("status: {}", output.status);
             println!("stdout:\n{}", String::from_utf8_lossy(&output.stdout));
             println!("stderr: {}", String::from_utf8_lossy(&output.stderr));

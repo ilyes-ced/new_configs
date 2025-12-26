@@ -1,0 +1,23 @@
+[general]
+import = [
+  "~/.config/alacritty/colors.toml",
+]
+
+[window]
+  padding.x = 5
+  padding.y = 5
+  dynamic_padding = true 
+  decorations = "None"
+
+[scrolling]
+  multiplier = 10
+
+[selection]
+  save_to_clipboard = true
+
+[font]
+  normal.family = "JetBrains Mono"
+  bold.family = "JetBrains Mono"
+  italic.family = "JetBrains Mono"
+  bold_italic.family = "JetBrains Mono"
+  size = 9.0

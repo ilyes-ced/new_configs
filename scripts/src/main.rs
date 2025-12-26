@@ -85,14 +85,16 @@ fn decide_wallpaper(wallpaper: &str) -> String {
 fn set_wallpaper(wallpaper_path: String) {
     let wall_path = env::var("CONFIG_PATH").unwrap_or_else(|_| {
         let home = home::home_dir().unwrap();
-        home.join("new_configs/scripts/active/wallpaper").to_string_lossy().into_owned()
+        home.join("Documents/Projects/new_configs/scripts/active/wallpaper").to_string_lossy().into_owned()
     });
 
     let output = Command::new("rm").arg(&wall_path).output().expect("Failed to execute command");
+    println!("=======>>> rm old wallpaper path output");
     println!("status: {}", output.status);
     println!("stdout:\n{}", String::from_utf8_lossy(&output.stdout));
     println!("stderr: {}", String::from_utf8_lossy(&output.stderr));
 
+    println!("=======>>> link new wallpaper path output");
     let output = Command::new("ln").arg(wallpaper_path).arg(&wall_path).output().expect("Failed to execute command");
     println!("status: {}", output.status);
     println!("stdout:\n{}", String::from_utf8_lossy(&output.stdout));

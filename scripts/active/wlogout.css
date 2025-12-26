@@ -4,15 +4,15 @@
 }
 
 window {
-	background-color: {{background}};
+	background-color: #07050c;
 }
 
 button {
 	border-radius: 0;
-	border-color: {{color5}};
-	text-decoration-color: {{color5}};
-	color: {{color5}};
-	background-color: {{color7}};
+	border-color: #51244e;
+	text-decoration-color: #51244e;
+	color: #51244e;
+	background-color: #8d8995;
 	border-style: solid;
 	border-width: 1px;
 	background-repeat: no-repeat;
@@ -23,6 +23,6 @@ button {
 
 button:focus, button:active, button:hover {
 	/* 20% Overlay 2, 80% mantle */
-	background-color: {{color9}};
+	background-color: #533986;
 	outline-style: none;
 }

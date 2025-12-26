@@ -58,7 +58,7 @@ done
 ############################################
 ############################################
 echo "Installing pacman packages ..."
-sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd adobe-source-han-sans-jp-fonts fastfetch bat waybar python-pywal python-colorthief nvim 
+sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd adobe-source-han-sans-jp-fonts fastfetch bat waybar python-pywal python-colorthief nvim htop
 echo "All pacman packages installed successfully!"
 
 
@@ -77,10 +77,10 @@ fi
 # else
 #   echo "Skipping gaming tools."
 # fi
+
+
 #? needs to enable multilib
 # enabling multilib
-
-
 if ask "Install gaming tools (Steam, Wine, Lutris)?"; then
   if grep -q '^\s*#\s*\[multilib\]' /etc/pacman.conf; then
     sudo sed -i '/^\s*#\s*\[multilib\]/,/^\s*#\s*Include/ {
@@ -277,5 +277,6 @@ echo "All extensions have been installed."
 
 
 # TODO: 
-#   greeter + enable greeter
+#   greeter + enable greeter {sudo systemctl enable sddm}
 #   docker
+#   try ghosty terminal
