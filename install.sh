@@ -63,6 +63,19 @@ echo "All pacman packages installed successfully!"
 
 
 
+
+
+# bluetooth stuff
+if ask "Install bluetooth?"; then
+    sudo pacman -S --needed --noconfirm bluez blueman bluez-utils
+    sudo systemctl start bluetooth.service
+else
+    echo "Skipping bluetooth."
+fi
+
+
+
+
 # nvidia stuff
 if ask "Install Nvidia drivers?"; then
     sudo pacman -S --needed --noconfirm nvidia lib32-nvidia-utils nvidia-utils nvidia-settings
@@ -102,8 +115,21 @@ fi
 ############################################
 ############################################
 echo "Installing yay packages from the list..."
-yay -S --needed --noconfirm brave-bin copyq floorp-bin zen-browser-bin vscodium-bin wlogout noto-fonts-ar
+yay -S --needed --noconfirm brave-bin copyq floorp-bin zen-browser-bin vscodium-bin wlogout noto-fonts-ar noctalia-shell matugen-bin adw-gtk-theme qt6ct
 echo "All yay packages installed successfully!"
+
+
+
+
+# noctalia settings
+echo "applying noctalia to gtk"
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'  # or 'prefer-light'
+# flatpak install org.gtk.Gtk3theme.adw-gtk3-dark
+# flatpak install org.gtk.Gtk3theme.adw-gtk3
+flatpak install -y --noninteractive --system flathub org.gtk.Gtk3theme.adw-gtk3-dark
+flatpak install -y --noninteractive --system flathub org.gtk.Gtk3theme.adw-gtk3
+
 
 
 
@@ -180,8 +206,8 @@ echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 if ! command -v atuin &>/dev/null; then
   echo "Installing atuin..."
   curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
-  echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
 fi
+echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
 
 ### ================================
 ### ZELLIJ
