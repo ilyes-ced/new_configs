@@ -322,7 +322,9 @@ sudo tee /etc/greetd/config.toml > /dev/null <<'EOF'
 vt = 1
 
 [default_session]
-command = "tuigreet --cmd sway"
+command = "tuigreet \
+  --time \
+  --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' \
+  --cmd hyprland"
 user = "greeter"
-border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red
 EOF
