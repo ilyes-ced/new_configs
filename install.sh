@@ -8,7 +8,7 @@ if ! command -v sudo &>/dev/null; then
   exit 1
 fi
 
-echo "Make sure multilib is enabled in /etc/pacman.conf before continuing."
+# echo "Make sure multilib is enabled in /etc/pacman.conf before continuing."
 read -rp "Press ENTER to continue or Ctrl+C to abort..."
 
 
@@ -58,7 +58,7 @@ done
 ############################################
 ############################################
 echo "Installing pacman packages ..."
-sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd adobe-source-han-sans-jp-fonts fastfetch bat waybar python-pywal python-colorthief nvim htop
+sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd cliphist wl-clipboard adobe-source-han-sans-jp-fonts fastfetch bat waybar python-pywal python-colorthief nvim htop
 echo "All pacman packages installed successfully!"
 
 
@@ -95,6 +95,7 @@ fi
 #? needs to enable multilib
 # enabling multilib
 if ask "Install gaming tools (Steam, Wine, Lutris)?"; then
+  echo "Enabling multilib"
   if grep -q '^\s*#\s*\[multilib\]' /etc/pacman.conf; then
     sudo sed -i '/^\s*#\s*\[multilib\]/,/^\s*#\s*Include/ {
       s/^\s*#\s*//
@@ -127,6 +128,7 @@ gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'  # or 'prefer-light'
 # flatpak install org.gtk.Gtk3theme.adw-gtk3-dark
 # flatpak install org.gtk.Gtk3theme.adw-gtk3
+sudoo pacman -S flatpak
 flatpak install -y --noninteractive --system flathub org.gtk.Gtk3theme.adw-gtk3-dark
 flatpak install -y --noninteractive --system flathub org.gtk.Gtk3theme.adw-gtk3
 
@@ -151,10 +153,6 @@ fi
 ### ================================
 ### ZSH + OH-MY-ZSH
 ### ================================
-if [[ "$SHELL" != *zsh ]]; then
-  echo "Changing default shell to zsh (password required)"
-  chsh -s "$(which zsh)"
-fi
 
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   echo "Installing Oh My Zsh..."
@@ -298,7 +296,15 @@ echo "Finished copying config files . . ."
 
 
 
-echo "All extensions have been installed."
+
+
+
+if [[ "$SHELL" != *zsh ]]; then
+  echo "Changing default shell to zsh (password required)"
+  chsh -s "$(which zsh)"
+fi
+
+
 
 
 
@@ -306,3 +312,17 @@ echo "All extensions have been installed."
 #   greeter + enable greeter {sudo systemctl enable sddm}
 #   docker
 #   try ghosty terminal
+
+
+sudo pacman -S greetd-tuigreet
+sudo systemctl enable greetd
+
+sudo tee /etc/greetd/config.toml > /dev/null <<'EOF'
+[terminal]
+vt = 1
+
+[default_session]
+command = "tuigreet --cmd sway"
+user = "greeter"
+border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red
+EOF

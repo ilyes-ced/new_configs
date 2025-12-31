@@ -13,7 +13,6 @@ use std::{
 // can be "all" or "favs"
 // favs for my faviourt themes and all for all
 const THEME_DIR: &str = "favs";
-const BRIGHTER_VALUE: i64 = 30;
 
 mod templating;
 
