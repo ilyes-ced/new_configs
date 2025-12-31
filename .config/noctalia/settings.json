@@ -19,25 +19,26 @@
         "externalMixer": "pwvucontrol || pavucontrol",
         "mprisBlacklist": [
         ],
-        "preferredPlayer": "",
+        "preferredPlayer": "mpv",
         "visualizerType": "linear",
         "volumeOverdrive": false,
         "volumeStep": 5
     },
     "bar": {
-        "capsuleOpacity": 0.5,
+        "backgroundOpacity": 1,
+        "capsuleOpacity": 1,
         "density": "comfortable",
         "exclusive": true,
-        "floating": false,
+        "floating": true,
         "marginHorizontal": 0.25,
         "marginVertical": 0.25,
         "monitors": [
         ],
-        "outerCorners": true,
+        "outerCorners": false,
         "position": "left",
         "showCapsule": true,
         "showOutline": true,
-        "transparent": false,
+        "useSeparateOpacity": true,
         "widgets": {
             "center": [
                 {
@@ -45,11 +46,13 @@
                     "colorizeIcons": false,
                     "enableScrollWheel": true,
                     "followFocusedScreen": false,
+                    "groupedBorderOpacity": 1,
                     "hideUnoccupied": true,
                     "id": "Workspace",
                     "labelMode": "index",
                     "showApplications": false,
-                    "showLabelsOnlyWhenOccupied": true
+                    "showLabelsOnlyWhenOccupied": true,
+                    "unfocusedIconsOpacity": 1
                 }
             ],
             "left": [
@@ -86,10 +89,12 @@
                     "formatHorizontal": "HH:mm ddd, MMM dd",
                     "formatVertical": "HH mm - dd MM",
                     "id": "Clock",
+                    "tooltipFormat": "HH:mm ddd, MMM dd",
                     "useCustomFont": false,
                     "usePrimaryColor": false
                 },
                 {
+                    "compactMode": true,
                     "diskPath": "/",
                     "id": "SystemMonitor",
                     "showCpuTemp": false,
@@ -99,6 +104,7 @@
                     "showMemoryAsPercent": true,
                     "showMemoryUsage": true,
                     "showNetworkStats": true,
+                    "useMonospaceFont": true,
                     "usePrimaryColor": false
                 },
                 {
@@ -271,7 +277,7 @@
         }
     },
     "desktopWidgets": {
-        "enabled": false,
+        "enabled": true,
         "gridSnap": true,
         "monitorWidgets": [
             {
@@ -369,6 +375,11 @@
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
         "respectExpireTimeout": false,
+        "saveToHistory": {
+            "critical": true,
+            "low": true,
+            "normal": true
+        },
         "sounds": {
             "criticalSoundFile": "",
             "enabled": false,
@@ -398,6 +409,7 @@
         "audioCodec": "opus",
         "audioSource": "default_output",
         "colorRange": "limited",
+        "copyToClipboard": false,
         "directory": "/home/ilyes/Videos",
         "frameRate": 60,
         "quality": "very_high",
@@ -408,7 +420,7 @@
     "sessionMenu": {
         "countdownDuration": 10000,
         "enableCountdown": true,
-        "largeButtonsStyle": false,
+        "largeButtonsStyle": true,
         "position": "center",
         "powerOptions": [
             {
@@ -448,30 +460,32 @@
                 "enabled": true
             }
         ],
-        "showHeader": true
+        "showHeader": true,
+        "showNumberLabels": true
     },
-    "settingsVersion": 32,
+    "settingsVersion": 35,
     "systemMonitor": {
-        "cpuCriticalThreshold": 90,
+        "cpuCriticalThreshold": 80,
         "cpuPollingInterval": 2500,
         "cpuWarningThreshold": 80,
-        "criticalColor": "",
+        "criticalColor": "#ffb4ab",
         "diskCriticalThreshold": 90,
+        "diskPath": "/",
         "diskPollingInterval": 3000,
         "diskWarningThreshold": 80,
-        "enableDgpuMonitoring": true,
-        "gpuCriticalThreshold": 90,
-        "gpuPollingInterval": 3000,
+        "enableDgpuMonitoring": false,
+        "gpuCriticalThreshold": 95,
+        "gpuPollingInterval": 3250,
         "gpuWarningThreshold": 80,
         "memCriticalThreshold": 90,
         "memPollingInterval": 3000,
         "memWarningThreshold": 80,
         "networkPollingInterval": 3000,
         "tempCriticalThreshold": 90,
-        "tempPollingInterval": 3000,
-        "tempWarningThreshold": 80,
+        "tempPollingInterval": 2750,
+        "tempWarningThreshold": 75,
         "useCustomColors": false,
-        "warningColor": ""
+        "warningColor": "#ccbdff"
     },
     "templates": {
         "alacritty": true,
@@ -532,6 +546,7 @@
         "transitionEdgeSmoothness": 0.05,
         "transitionType": "random",
         "useWallhaven": false,
+        "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
         "wallhavenPurity": "100",
@@ -540,6 +555,7 @@
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",
         "wallhavenResolutionWidth": "",
-        "wallhavenSorting": "relevance"
+        "wallhavenSorting": "relevance",
+        "wallpaperChangeMode": "random"
     }
 }

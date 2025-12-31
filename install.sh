@@ -322,7 +322,7 @@ sudo tee /etc/greetd/config.toml > /dev/null <<'EOF'
 vt = 1
 
 [default_session]
-command = "tuigreet --time --remember --remember-session --asterisks --user-menu --theme text=white;container=gray;border=red;prompt=cyan;input=white;action=green;button=yellow;time=darkgray --cmd hyprland"
+command = "tuigreet --time --remember --remember-session --asterisks --theme text=white;container=gray;border=magenta;prompt=cyan;input=white;action=green;button=yellow;time=darkgray --cmd hyprland"
 
 user = "greeter"
 EOF
