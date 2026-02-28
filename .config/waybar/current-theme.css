@@ -1,31 +1,31 @@
 /* catppuccin mocha */
 
-@define-color rosewater     #f5e0dc;
-@define-color flamingo      #f2cdcd;
-@define-color pink          #f5c2e7;
-@define-color mauve         #cba6f7;
-@define-color red           #f38ba8;
-@define-color maroon        #eba0ac;
-@define-color peach         #fab387;
-@define-color yellow        #f9e2af;
-@define-color green         #a6e3a1;
-@define-color teal          #94e2d5;
-@define-color sky           #89dceb;
-@define-color sapphire      #74c7ec;
-@define-color blue          #89b4fa;
-@define-color lavender      #b4befe;
-@define-color text          #cdd6f4;
-@define-color subtext1      #bac2de;
-@define-color subtext0      #a6adc8;
-@define-color overlay2      #9399b2;
-@define-color overlay1      #7f849c;
-@define-color overlay0      #6c7086;
-@define-color surface2      #585b70;
-@define-color surface1      #45475a;
-@define-color surface0      #313244;
-@define-color base          #1e1e2e;
-@define-color mantle        #181825;
-@define-color crust         #11111b;
+@define-color rosewater     #4f031b;
+@define-color flamingo      #69031a;
+@define-color pink          #4e122d;
+@define-color mauve         #511b33;
+@define-color red           #9e1818;
+@define-color maroon        #a54218;
+@define-color peach         #968c90;
+@define-color yellow        #6a5661;
+@define-color green         #923e59;
+@define-color teal          #a5465c;
+@define-color sky           #9b426a;
+@define-color sapphire      #a3466f;
+@define-color blue          #c27272;
+@define-color lavender      #c48e77;
+@define-color text          #c3c1c2;
+@define-color subtext1      #dacfd4;
+@define-color subtext0      #c6bbc0;
+@define-color overlay2      #b2a7ac;
+@define-color overlay1      #9e9398;
+@define-color overlay0      #8a7f84;
+@define-color surface2      #766b70;
+@define-color surface1      #62575c;
+@define-color surface0      #4e4348;
+@define-color base          #3a2f34;
+@define-color mantle        #261b20;
+@define-color crust         #12070c;
 
 /*
 	br - border

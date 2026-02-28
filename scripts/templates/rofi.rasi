@@ -1,23 +1,8 @@
 * {
-    /* Backgrounds */
-    background:       {{background}};     /* base */
-    background-alt:   {{color1}};     /* surface0 */
-    bg:               {{color2}};     /* base */
-
-    /* Foregrounds */
-    foreground:       {{foreground}};     /* text */
-    fg:               {{foreground}};     /* text */
-    subtext1:         {{background}};     /* subtext1 */
-
-    /* Active / Selected */
-    active-bg:        {{color5}};     /* blue */
-    active-fg:        {{color8}};     /* base */
-    selected:         {{color9}};     /* blue */
-
-    /* Urgent */
-    urgent:           {{color3}};     /* red / rose */
-
-    /* Borders */
-    border:           {{color7}};     /* surface2 */
-    border2:          {{color10}};     /* surface0 */
+    background:     {{background}};
+    background-alt: {{color1}};
+    foreground:     {{foreground}};
+    selected:       {{color5}};
+    active:         {{color6}};
+    urgent:         {{color7}};
 }

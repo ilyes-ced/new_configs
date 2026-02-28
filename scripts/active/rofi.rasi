@@ -1,23 +1,8 @@
 * {
-    /* Backgrounds */
-    background:       #07050c;     /* base */
-    background-alt:   #17043c;     /* surface0 */
-    bg:               #2d0f6e;     /* base */
-
-    /* Foregrounds */
-    foreground:       #c1c0c2;     /* text */
-    fg:               #c1c0c2;     /* text */
-    subtext1:         #07050c;     /* subtext1 */
-
-    /* Active / Selected */
-    active-bg:        #51244e;     /* blue */
-    active-fg:        #585567;     /* base */
-    selected:         #533986;     /* blue */
-
-    /* Urgent */
-    urgent:           #4b0f9b;     /* red / rose */
-
-    /* Borders */
-    border:           #8d8995;     /* surface2 */
-    border2:          #6b4bb0;     /* surface0 */
+    background:     #0a0813;
+    background-alt: #20105e;
+    foreground:     #c1c1c4;
+    selected:       #932869;
+    active:         #5d6da8;
+    urgent:         #8e8c96;
 }

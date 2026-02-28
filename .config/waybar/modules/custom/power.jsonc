@@ -1,29 +1,29 @@
 {
-	"custom/system_update": {
-		"exec": "~/.config/waybar/scripts/system-update.sh module",
+	"custom/power": {
+		// "exec":
 		// "exec-if":
 		// "exec-on-event":
 		// "hide-empty-text":
-		"return-type": "json",
-		"interval": 3600,
+		// "return-type":
+		// "interval":
 		// "restart-interval":
-		"signal": 1,
-		"format": "{}",
+		// "signal":
+		"format": "󰤄",
 		// "format-icons":
 		// "rotate":
+		// "min-length":
+		// "max-length":
 		// "align":
 		// "justify":
-		"min-length": 2,
-		"max-length": 2,
-		"on-click": "kitty -e ~/.config/waybar/scripts/system-update.sh",
+		"on-click": "kitty -e ~/.config/waybar/scripts/power",
 		// "on-click-middle":
-		"on-click-right": "pkill -RTMIN+1 waybar"
+		// "on-click-right":
 		// "on-update":
 		// "on-scroll-up":
 		// "on-scroll-down":
 		// "smooth-scrolling-threshold":
 		// "tooltip":
-		// "tooltip-format":
+		"tooltip-format": "Power Menu"
 		// "escape":
 		// "menu":
 		// "menu-file":

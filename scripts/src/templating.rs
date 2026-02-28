@@ -19,14 +19,21 @@ use std::{
 
 pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
     // reads files from themes/json and create all the color scheme files for alacritty i3 polybar ......
-    let json_values = match theme_name {
-        Some(name) => read_scheme_json(&Path::new(&name)).unwrap(),
+    let json_path = match theme_name {
+        Some(name) => name,
         None => {
             let home = home::home_dir().unwrap();
-            let json_path = home.join("Documents/Projects/new_configs/scripts/themes/active/active.json").to_string_lossy().into_owned();
-            read_scheme_json(&Path::new(&json_path)).unwrap()
+            let json_path = home.join("new_configs/scripts/active/active.json").to_string_lossy().into_owned();
+            json_path
         }
     };
+
+    println!("================== {:?}", json_path);
+
+    let json_values = read_scheme_json(Path::new(&json_path)).unwrap();
+
+    println!("================== {:?}", json_values);
+
     // let _ = create_json(&json_values).unwrap();
     // let _ = create_alacritty(&json_values).unwrap();
     // let _ = create_rofi(&json_values).unwrap();
@@ -39,11 +46,11 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
 
     let template_path = env::var("CONFIG_PATH").unwrap_or_else(|_| {
         let home = home::home_dir().unwrap();
-        home.join("Documents/Projects/new_configs/scripts/templates/").to_string_lossy().into_owned()
+        home.join("new_configs/scripts/templates/").to_string_lossy().into_owned()
     });
     let results_path = env::var("CONFIG_PATH").unwrap_or_else(|_| {
         let home = home::home_dir().unwrap();
-        home.join("Documents/Projects/new_configs/scripts/active/").to_string_lossy().into_owned()
+        home.join("new_configs/scripts/active/").to_string_lossy().into_owned()
     });
 
     let _ = create_file(&json_values, format!("{}{}", template_path, "hyprland.conf"), format!("{}{}", results_path, "hyprland.conf")).unwrap();
@@ -98,8 +105,8 @@ fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dy
             "background": s["background"],
             "foreground": s["foreground"],
             "cursor": s["cursor"],
-            "hypr_active_border": format!("{}ff",s["color5"].as_str().expect("Expected a string").strip_prefix('#').unwrap()),
-            "hypr_background": format!("{}ff",s["background"].as_str().expect("Expected a string").strip_prefix('#').unwrap()),
+            "hypr_active_border": s["color5"].as_str().expect("Expected a string").strip_prefix('#').unwrap(),
+            "hypr_background": s["background"].as_str().expect("Expected a string").strip_prefix('#').unwrap(),
 
         }),
     )?;

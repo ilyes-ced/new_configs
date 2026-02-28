@@ -1,29 +1,53 @@
 * {
-  font-family: "Commit Mono Nerd Font";
-  font-weight: bold;
-  font-size: 12px;
+	font-family: "Commit Mono Nerd Font";
+	font-weight: bold;
+	font-size: 10px;
 }
 
-#custom-user,
 #window label,
 #mpris,
 tooltip label {
-  font-weight: normal;
+	font-family: "JetBrains Mono Nerd Font";
+	font-weight: bold;
 }
 
 #workspaces button.active label,
 #workspaces button.focused label,
 #custom-distro {
-  font-size: 20px;
+	font-size: 20px;
 }
 
-#custom-power_menu {
-  font-size: 18px;
+#custom-power {
+	font-size: 18px;
 }
 
 #custom-left_div,
 #custom-left_inv,
 #custom-right_div,
 #custom-right_inv {
-  font-size: 22px;
+	font-size: 20px;
+}
+
+
+
+
+
+#user, 
+#workspaces, 
+#window, 
+#temperature, 
+#memory, 
+#cpu, 
+#distro, 
+#idle_inhibitor, 
+#clock, #time
+#clock, #date
+#bluetooth, 
+#update, 
+#mpris, 
+#pulseaudio, 
+#disk, 
+#network, 
+#power{
+	font-family: "JetBrains Mono Nerd Font";
 }
