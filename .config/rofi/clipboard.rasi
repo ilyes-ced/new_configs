@@ -61,10 +61,13 @@ wallframe {
 // Inputs //
 inputbar {
     enabled:                     true;
-    padding:                     0em;
+    padding:                     0px;
     children:                    [ "entry" ];
     background-color:            @background;
     expand:                      true;
+    border:                      2px solid;
+    border-color:                @selected;
+
 }
 entry {
     enabled:                     true;
@@ -84,7 +87,7 @@ listbox {
 }
 listview {
     enabled:                     true;
-    padding:                     0.5em;
+    padding:                     0em;
     columns:                     1;
     lines:                       11; 
     cycle:                       true;

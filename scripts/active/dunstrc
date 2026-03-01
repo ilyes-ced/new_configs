@@ -10,7 +10,7 @@
     padding = 0
     horizontal_padding = 8
     frame_width = 3
-    frame_color = "#b02d18"
+    frame_color = "#3b318a"
 
     # Define a color for the separator.
     # possible values are:
@@ -79,21 +79,21 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#120710"
-    foreground = "#c3c1c3"
+    background = "#070710"
+    foreground = "#c1c1c3"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
     icon = /usr/share/icons/Papirus-Dark/16x16/status/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Adwaita/256x256/status/
 
 [urgency_normal]
-    background = "#120710"
-    foreground = "#c3c1c3"
+    background = "#070710"
+    foreground = "#c1c1c3"
     timeout = 5
 
 [urgency_critical]
-    background = "#120710"
-    foreground = "#c3c1c3"
-    frame_color = "#3f3369"
+    background = "#070710"
+    foreground = "#c1c1c3"
+    frame_color = "#1c3349"
     timeout = 0
 
 # Every section that isn't one of the above is interpreted as a rules to
