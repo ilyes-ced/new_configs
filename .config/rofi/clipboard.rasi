@@ -29,8 +29,8 @@ window {
     spacing:                     0em;
     padding:                     0em;
     border:                      2px solid;
-    border-color:                @border;
-    background-color:            @bg;
+    border-color:                @selected;
+    background-color:            @background;
 }
 mainbox {
     enabled:                     true;
@@ -46,15 +46,14 @@ wallbox {
     expand:                      false;
     orientation:                 horizontal;
     background-color:            transparent;
-    background-image:            url("~/.cache/hyde/wall.blur", width);
-    children:                    [ "wallframe" , "inputbar" ];
+    children:                    [ "inputbar" ];
 }
 wallframe {
     width:                       5em;
     spacing:                     0em;
     padding:                     0em;
     expand:                      false;
-    background-color:            @bg;
+    background-color:            @background;
     background-image:            url("~/.cache/hyde/wall.quad", width);
 }
 
@@ -64,13 +63,13 @@ inputbar {
     enabled:                     true;
     padding:                     0em;
     children:                    [ "entry" ];
-    background-color:            @bg;
+    background-color:            @background;
     expand:                      true;
 }
 entry {
     enabled:                     true;
     padding:                     1.8em;
-    text-color:                  @fg;
+    text-color:                  @foreground;
     background-color:            transparent;
 }
 
@@ -94,7 +93,7 @@ listview {
     expand:                      false;
     cursor:                      "default";
     background-color:            transparent;
-    text-color:                  @fg;
+    text-color:                  @foreground;
 }
 dummy {
     spacing:                     0em;
@@ -109,14 +108,13 @@ element {
     padding:                     0.5em;
     cursor:                      pointer;
     background-color:            transparent;
-    text-color:                  @fg;
+    text-color:                  @foreground;
 }
 element selected.normal {
-    background-color:            @active-bg;
-    text-color:                  @active-fg;
+    background-color:            @selected;
 
     border:                      2px solid;
-    border-color:                @border;
+    border-color:                @foreground;
     vertical-align:              1;
 }
 element-text {
