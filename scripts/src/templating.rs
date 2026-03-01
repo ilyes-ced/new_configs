@@ -72,11 +72,6 @@ fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dy
     println!("{}", format!("{}ff", s["background"].as_str().expect("Expected a string")));
     println!("");
 
-    println!(".........{}", s["background"].as_str().expect("Expected a string"));
-    println!(".........{}", hex_to_rgba(s["background"].as_str().expect("Expected a string")));
-    println!(".........{}", hex_to_rgba(s["background"].as_str().expect("Expected a string")));
-    println!(".........{}", hex_to_rgba(s["background"].as_str().expect("Expected a string")));
-
     let template = fs::read_to_string(template).unwrap();
     let new_json = reg.render_template(
         &template,
@@ -188,6 +183,5 @@ fn hex_to_zellij_rgb(hex: &str) -> String {
     let r = u8::from_str_radix(&hex[1..3], 16).unwrap();
     let g = u8::from_str_radix(&hex[3..5], 16).unwrap();
     let b = u8::from_str_radix(&hex[5..7], 16).unwrap();
-    println!("zelllij RGB{}", format!("{} {} {}", r, g, b));
     format!("{} {} {}", r, g, b)
 }
