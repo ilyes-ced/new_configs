@@ -1,18 +1,18 @@
 [colors.primary]
-background = "#070710"
-foreground = "#c1c1c3"
+background = "#071111"
+foreground = "#c1c3c3"
 
 [colors.cursor]
-text = "#070710"
-cursor = "#c1c1c3"
+text = "#071111"
+cursor = "#c1c3c3"
 
 [colors.vi_mode_cursor]
-text = "#070710"
-cursor = "#c1c1c3"
+text = "#071111"
+cursor = "#c1c3c3"
 
 [colors.search.matches]
-foreground = "#070710"
-background = "#c1c1c3"
+foreground = "#071111"
+background = "#c1c3c3"
 
 
 [colors.search.focused_match]
@@ -28,21 +28,21 @@ text = "CellBackground"
 background = "CellForeground"
 
 [colors.normal]
-black = "#070710"
-red = "#172462"
-green = "#451f3a"
-yellow = "#1c3349"
-blue = "#3b318a"
-magenta = "#792351"
-cyan = "#18748d"
-white = "#8b8b96"
+black = "#071111"
+red = "#3b3948"
+green = "#494a4b"
+yellow = "#615b5c"
+blue = "#a24526"
+magenta = "#6b6571"
+cyan = "#807d7f"
+white = "#8b9696"
 
 [colors.bright]
-black = "#565669"
-red = "#4a5bae"
-green = "#9e4486"
-yellow = "#4471a0"
-blue = "#7f76c4"
-magenta = "#bb6091"
-cyan = "#66abbd"
-white = "#c1c1c3"
+black = "#566a6a"
+red = "#5b4db2"
+green = "#5b89b8"
+yellow = "#c47784"
+blue = "#c8907e"
+magenta = "#ab89cc"
+cyan = "#d8a4c7"
+white = "#c1c3c3"
