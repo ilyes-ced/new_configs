@@ -72,6 +72,11 @@ fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dy
     println!("{}", format!("{}ff", s["background"].as_str().expect("Expected a string")));
     println!("");
 
+    println!(".........{}", s["background"].as_str().expect("Expected a string"));
+    println!(".........{}", hex_to_rgba(s["background"].as_str().expect("Expected a string")));
+    println!(".........{}", hex_to_rgba(s["background"].as_str().expect("Expected a string")));
+    println!(".........{}", hex_to_rgba(s["background"].as_str().expect("Expected a string")));
+
     let template = fs::read_to_string(template).unwrap();
     let new_json = reg.render_template(
         &template,
@@ -107,7 +112,27 @@ fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dy
             "cursor": s["cursor"],
             "hypr_active_border": s["color5"].as_str().expect("Expected a string").strip_prefix('#').unwrap(),
             "hypr_background": s["background"].as_str().expect("Expected a string").strip_prefix('#').unwrap(),
+            "wlogout_background": hex_to_rgba(s["background"].as_str().expect("Expected a string")),
 
+            // !!! very lazy behavior
+            "zellij_color0": hex_to_zellij_rgb(s["color0"].as_str().expect("Expected a string")),
+            "zellij_color1": hex_to_zellij_rgb(s["color1"].as_str().expect("Expected a string")),
+            "zellij_color2": hex_to_zellij_rgb(s["color2"].as_str().expect("Expected a string")),
+            "zellij_color3": hex_to_zellij_rgb(s["color3"].as_str().expect("Expected a string")),
+            "zellij_color4": hex_to_zellij_rgb(s["color4"].as_str().expect("Expected a string")),
+            "zellij_color5": hex_to_zellij_rgb(s["color5"].as_str().expect("Expected a string")),
+            "zellij_color6": hex_to_zellij_rgb(s["color6"].as_str().expect("Expected a string")),
+            "zellij_color7": hex_to_zellij_rgb(s["color7"].as_str().expect("Expected a string")),
+            "zellij_color8": hex_to_zellij_rgb(s["color8"].as_str().expect("Expected a string")),
+            "zellij_color9": hex_to_zellij_rgb(s["color9"].as_str().expect("Expected a string")),
+            "zellij_color10": hex_to_zellij_rgb(s["color10"].as_str().expect("Expected a string")),
+            "zellij_color11": hex_to_zellij_rgb(s["color11"].as_str().expect("Expected a string")),
+            "zellij_color12": hex_to_zellij_rgb(s["color12"].as_str().expect("Expected a string")),
+            "zellij_color13": hex_to_zellij_rgb(s["color13"].as_str().expect("Expected a string")),
+            "zellij_color14": hex_to_zellij_rgb(s["color14"].as_str().expect("Expected a string")),
+            "zellij_color15": hex_to_zellij_rgb(s["color15"].as_str().expect("Expected a string")),
+            "zellij_background": hex_to_zellij_rgb(s["background"].as_str().expect("Expected a string")),
+            "zellij_foreground": hex_to_zellij_rgb(s["foreground"].as_str().expect("Expected a string")),
         }),
     )?;
     let mut file = File::create(result).unwrap();
@@ -143,4 +168,26 @@ fn make_bright(color: &str, level: i64) -> Result<String, ()> {
     //println!("result !::::: {}", String::from(format!("{:x}{:x}{:x}", r_brt, g_brt, b_brt)));
 
     Ok(String::from(format!("#{:x}{:x}{:x}", r_brt, g_brt, b_brt)))
+}
+
+fn hex_to_rgba(hex: &str) -> String {
+    if hex.len() != 7 || !hex.starts_with('#') {
+        panic!("Invalid hex format. Use #RRGGBB");
+    }
+    let r = u8::from_str_radix(&hex[1..3], 16).unwrap();
+    let g = u8::from_str_radix(&hex[3..5], 16).unwrap();
+    let b = u8::from_str_radix(&hex[5..7], 16).unwrap();
+    //? wlogout background alpha is determined here
+    format!("rgba({}, {}, {}, 0.8)", r, g, b)
+}
+
+fn hex_to_zellij_rgb(hex: &str) -> String {
+    if hex.len() != 7 || !hex.starts_with('#') {
+        panic!("Invalid hex format. Use #RRGGBB");
+    }
+    let r = u8::from_str_radix(&hex[1..3], 16).unwrap();
+    let g = u8::from_str_radix(&hex[3..5], 16).unwrap();
+    let b = u8::from_str_radix(&hex[5..7], 16).unwrap();
+    println!("zelllij RGB{}", format!("{} {} {}", r, g, b));
+    format!("{} {} {}", r, g, b)
 }

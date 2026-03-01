@@ -283,122 +283,122 @@ simplified_ui false
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "cat-per"
+theme "custom"
 
 themes {
-    cat-per {
+    custom {
         text_unselected {
-            base 205 214 244
-            background 30 30 46
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base {{zellij_foreground}}
+            background {{zellij_background}}
+            emphasis_0 {{zellij_color5}}
+            emphasis_1 {{zellij_color11}}
+            emphasis_2 {{zellij_color14}}
+            emphasis_3 {{zellij_color13}}
         }
         text_selected {
-            base 205 214 244
-            background 88 91 112
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base {{zellij_foreground}}
+            background {{zellij_color3}}
+            emphasis_0 {{zellij_color5}}
+            emphasis_1 {{zellij_color11}}
+            emphasis_2 {{zellij_color14}}
+            emphasis_3 {{zellij_color13}}
         }
         ribbon_selected {
-            base 30 30 46
-            background 166 227 161
-            emphasis_0 243 139 168
-            emphasis_1 250 179 135
-            emphasis_2 245 194 231
-            emphasis_3 137 180 250
+            base {{zellij_background}}
+            background {{zellij_color14}}
+            emphasis_0 {{zellij_color13}}
+            emphasis_1 {{zellij_color5}}
+            emphasis_2 {{zellij_color13}}
+            emphasis_3 {{zellij_color12}}
         }
         ribbon_unselected {
-            base 30 30 46
-            background 205 214 244
-            emphasis_0 243 139 168
-            emphasis_1 205 214 244
-            emphasis_2 137 180 250
-            emphasis_3 245 194 231
+            base {{zellij_background}}
+            background {{zellij_foreground}}
+            emphasis_0 {{zellij_color13}}
+            emphasis_1 {{zellij_foreground}}
+            emphasis_2 {{zellij_color12}}
+            emphasis_3 {{zellij_color14}}
         }
         table_title {
-            base 166 227 161
+            base {{zellij_color14}}
             background 0
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            emphasis_0 {{zellij_color5}}
+            emphasis_1 {{zellij_color11}}
+            emphasis_2 {{zellij_color14}}
+            emphasis_3 {{zellij_color13}}
         }
         table_cell_selected {
-            base 205 214 244
-            background 88 91 112
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base {{zellij_foreground}}
+            background {{zellij_color3}}
+            emphasis_0 {{zellij_color5}}
+            emphasis_1 {{zellij_color11}}
+            emphasis_2 {{zellij_color14}}
+            emphasis_3 {{zellij_color13}}
         }
         table_cell_unselected {
-            base 205 214 244
-            background 30 30 46
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base {{zellij_foreground}}
+            background {{zellij_background}}
+            emphasis_0 {{zellij_color5}}
+            emphasis_1 {{zellij_color11}}
+            emphasis_2 {{zellij_color14}}
+            emphasis_3 {{zellij_color13}}
         }
         list_selected {
-            base 205 214 244
-            background 88 91 112
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base {{zellij_foreground}}
+            background {{zellij_color3}}
+            emphasis_0 {{zellij_color5}}
+            emphasis_1 {{zellij_color11}}
+            emphasis_2 {{zellij_color14}}
+            emphasis_3 {{zellij_color13}}
         }
         list_unselected {
-            base 205 214 244
-            background 30 30 46
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base {{zellij_foreground}}
+            background {{zellij_background}}
+            emphasis_0 {{zellij_color5}}
+            emphasis_1 {{zellij_color11}}
+            emphasis_2 {{zellij_color14}}
+            emphasis_3 {{zellij_color13}}
         }
         frame_selected {
-            base 166 227 161
+            base {{zellij_color14}}
             background 0
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 245 194 231
+            emphasis_0 {{zellij_color5}}
+            emphasis_1 {{zellij_color11}}
+            emphasis_2 {{zellij_color13}}
             emphasis_3 0
         }
         frame_highlight {
-            base 250 179 135
+            base {{zellij_color5}}
             background 0
-            emphasis_0 245 194 231
-            emphasis_1 250 179 135
-            emphasis_2 250 179 135
-            emphasis_3 250 179 135
+            emphasis_0 {{zellij_color13}}
+            emphasis_1 {{zellij_color5}}
+            emphasis_2 {{zellij_color5}}
+            emphasis_3 {{zellij_color5}}
         }
         exit_code_success {
-            base 166 227 161
+            base {{zellij_color14}}
             background 0
-            emphasis_0 137 220 235
-            emphasis_1 30 30 46
-            emphasis_2 245 194 231
-            emphasis_3 137 180 250
+            emphasis_0 {{zellij_color11}}
+            emphasis_1 {{zellij_background}}
+            emphasis_2 {{zellij_color13}}
+            emphasis_3 {{zellij_color12}}
         }
         exit_code_error {
-            base 243 139 168
+            base {{zellij_color5}}
             background 0
-            emphasis_0 249 226 175
+            emphasis_0 {{zellij_color9}}
             emphasis_1 0
             emphasis_2 0
             emphasis_3 0
         }
         multiplayer_user_colors {
-            player_1 245 194 231
-            player_2 137 180 250
+            player_1 {{zellij_color13}}
+            player_2 {{zellij_color12}}
             player_3 0
-            player_4 249 226 175
-            player_5 137 220 235
+            player_4 {{zellij_color9}}
+            player_5 {{zellij_color11}}
             player_6 0
-            player_7 243 139 168
+            player_7 {{zellij_color5}}
             player_8 0
             player_9 0
             player_10 0

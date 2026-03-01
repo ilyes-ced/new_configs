@@ -1,3 +1,5 @@
+#![recursion_limit = "256"]
+
 use handlebars::Handlebars;
 use rand::seq::{IteratorRandom, SliceRandom};
 use serde_json::{from_str, json, Value};

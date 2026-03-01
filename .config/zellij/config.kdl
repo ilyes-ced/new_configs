@@ -283,10 +283,10 @@ simplified_ui false
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "cat-per"
+theme "custom"
 
 themes {
-    cat-per {
+    custom {
         text_unselected {
             base 205 214 244
             background 30 30 46

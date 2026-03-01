@@ -283,122 +283,122 @@ simplified_ui false
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "cat-per"
+theme "custom"
 
 themes {
-    cat-per {
+    custom {
         text_unselected {
-            base 205 214 244
-            background 30 30 46
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 195 193 195
+            background 18 7 16
+            emphasis_0 147 54 126
+            emphasis_1 115 95 186
+            emphasis_2 203 185 135
+            emphasis_3 200 127 184
         }
         text_selected {
-            base 205 214 244
-            background 88 91 112
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 195 193 195
+            background 63 51 105
+            emphasis_0 147 54 126
+            emphasis_1 115 95 186
+            emphasis_2 203 185 135
+            emphasis_3 200 127 184
         }
         ribbon_selected {
-            base 30 30 46
-            background 166 227 161
-            emphasis_0 243 139 168
-            emphasis_1 250 179 135
-            emphasis_2 245 194 231
-            emphasis_3 137 180 250
+            base 18 7 16
+            background 203 185 135
+            emphasis_0 200 127 184
+            emphasis_1 147 54 126
+            emphasis_2 200 127 184
+            emphasis_3 200 136 126
         }
         ribbon_unselected {
-            base 30 30 46
-            background 205 214 244
-            emphasis_0 243 139 168
-            emphasis_1 205 214 244
-            emphasis_2 137 180 250
-            emphasis_3 245 194 231
+            base 18 7 16
+            background 195 193 195
+            emphasis_0 200 127 184
+            emphasis_1 195 193 195
+            emphasis_2 200 136 126
+            emphasis_3 203 185 135
         }
         table_title {
-            base 166 227 161
+            base 203 185 135
             background 0
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            emphasis_0 147 54 126
+            emphasis_1 115 95 186
+            emphasis_2 203 185 135
+            emphasis_3 200 127 184
         }
         table_cell_selected {
-            base 205 214 244
-            background 88 91 112
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 195 193 195
+            background 63 51 105
+            emphasis_0 147 54 126
+            emphasis_1 115 95 186
+            emphasis_2 203 185 135
+            emphasis_3 200 127 184
         }
         table_cell_unselected {
-            base 205 214 244
-            background 30 30 46
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 195 193 195
+            background 18 7 16
+            emphasis_0 147 54 126
+            emphasis_1 115 95 186
+            emphasis_2 203 185 135
+            emphasis_3 200 127 184
         }
         list_selected {
-            base 205 214 244
-            background 88 91 112
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 195 193 195
+            background 63 51 105
+            emphasis_0 147 54 126
+            emphasis_1 115 95 186
+            emphasis_2 203 185 135
+            emphasis_3 200 127 184
         }
         list_unselected {
-            base 205 214 244
-            background 30 30 46
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 166 227 161
-            emphasis_3 245 194 231
+            base 195 193 195
+            background 18 7 16
+            emphasis_0 147 54 126
+            emphasis_1 115 95 186
+            emphasis_2 203 185 135
+            emphasis_3 200 127 184
         }
         frame_selected {
-            base 166 227 161
+            base 203 185 135
             background 0
-            emphasis_0 250 179 135
-            emphasis_1 137 220 235
-            emphasis_2 245 194 231
+            emphasis_0 147 54 126
+            emphasis_1 115 95 186
+            emphasis_2 200 127 184
             emphasis_3 0
         }
         frame_highlight {
-            base 250 179 135
+            base 147 54 126
             background 0
-            emphasis_0 245 194 231
-            emphasis_1 250 179 135
-            emphasis_2 250 179 135
-            emphasis_3 250 179 135
+            emphasis_0 200 127 184
+            emphasis_1 147 54 126
+            emphasis_2 147 54 126
+            emphasis_3 147 54 126
         }
         exit_code_success {
-            base 166 227 161
+            base 203 185 135
             background 0
-            emphasis_0 137 220 235
-            emphasis_1 30 30 46
-            emphasis_2 245 194 231
-            emphasis_3 137 180 250
+            emphasis_0 115 95 186
+            emphasis_1 18 7 16
+            emphasis_2 200 127 184
+            emphasis_3 200 136 126
         }
         exit_code_error {
-            base 243 139 168
+            base 147 54 126
             background 0
-            emphasis_0 249 226 175
+            emphasis_0 124 67 157
             emphasis_1 0
             emphasis_2 0
             emphasis_3 0
         }
         multiplayer_user_colors {
-            player_1 245 194 231
-            player_2 137 180 250
+            player_1 200 127 184
+            player_2 200 136 126
             player_3 0
-            player_4 249 226 175
-            player_5 137 220 235
+            player_4 124 67 157
+            player_5 115 95 186
             player_6 0
-            player_7 243 139 168
+            player_7 147 54 126
             player_8 0
             player_9 0
             player_10 0

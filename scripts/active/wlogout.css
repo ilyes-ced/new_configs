@@ -4,15 +4,15 @@
 }
 
 window {
-	background-color: #0a0813;
+	background-color: rgba(18, 7, 16, 0.8);
 }
 
 button {
 	border-radius: 0;
-	border-color: #932869;
-	text-decoration-color: #932869;
-	color: #932869;
-	background-color: #8e8c96;
+	border-color: #93367e;
+	text-decoration-color: #93367e;
+	color: #c3c1c3;
+	background-color: #750c46;
 	border-style: solid;
 	border-width: 1px;
 	background-repeat: no-repeat;
@@ -23,6 +23,61 @@ button {
 
 button:focus, button:active, button:hover {
 	/* 20% Overlay 2, 80% mantle */
-	background-color: #5a47a6;
+	background-color: #7c439d;
 	outline-style: none;
+}
+
+
+* {
+	background-image: none;
+	box-shadow: none;
+	background-size: 40%;
+}
+
+
+/* Adjust the size of the icon or content inside the button */
+button span {
+  font-size: 1.2em; /* Increase the font size */
+}
+
+#lock {
+  background-image: image(url("./icons/lock.png"));
+}
+#lock:hover {
+  background-image: image(url("./icons/lock-hover.png"));
+}
+
+#logout {
+  background-image: image(url("./icons/logout.png"));
+}
+#logout:hover {
+  background-image: image(url("./icons/logout-hover.png"));
+}
+
+#suspend {
+  background-image: image(url("./icons/sleep.png"));
+}
+#suspend:hover {
+  background-image: image(url("./icons/sleep-hover.png"));
+}
+
+#shutdown {
+  background-image: image(url("./icons/power.png"));
+}
+#shutdown:hover {
+  background-image: image(url("./icons/power-hover.png"));
+}
+
+#reboot {
+  background-image: image(url("./icons/restart.png"));
+}
+#reboot:hover {
+  background-image: image(url("./icons/restart-hover.png"));
+}
+
+#hibernate {
+  background-image: image(url("./icons/hibernate.png"));
+}
+#hibernate:hover {
+  background-image: image(url("./icons/hibernate-hover.png"));
 }
