@@ -58,7 +58,7 @@ done
 ############################################
 ############################################
 echo "Installing pacman packages ..."
-sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim slurp hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd cliphist wl-clipboard adobe-source-han-sans-jp-fonts fastfetch bat waybar python-pywal python-colorthief nvim htop pipewire pipewire-alsa pipewire-pulse wireplumber xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland linux-headers
+sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim slurp hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd cliphist wl-clipboard adobe-source-han-sans-jp-fonts fastfetch bat waybar python-pywal python-colorthief nvim htop pipewire pipewire-alsa pipewire-pulse wireplumber xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland linux-headers swww
 echo "All pacman packages installed successfully!"
 
 
