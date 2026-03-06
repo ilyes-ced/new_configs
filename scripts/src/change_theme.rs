@@ -130,8 +130,14 @@ fn decide_backend(backend: &String) -> &'static str {
         "colorz"
     } else if backend == "colorthief" {
         "colorthief"
+    } else if backend == "fast-colorthief" {
+        "fast-colorthief"
+    } else if backend == "modern_colorthief" {
+        "modern_colorthief"
+    } else if backend == "haishoku" {
+        "haishoku"
     } else if backend == "random" {
-        let arr = vec!["colorz", "wal", "colorthief"];
+        let arr = vec!["colorz", "wal", "colorthief", "fast-colorthief", "modern_colorthief", "haishoku"];
         let random = arr.choose(&mut rand::thread_rng());
         random.unwrap()
     } else {

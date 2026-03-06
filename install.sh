@@ -58,7 +58,7 @@ done
 ############################################
 ############################################
 echo "Installing pacman packages ..."
-sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim slurp hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd cliphist wl-clipboard adobe-source-han-sans-jp-fonts fastfetch bat waybar python-pywal python-colorthief nvim htop pipewire pipewire-alsa pipewire-pulse wireplumber xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland 
+sudo pacman -S --noconfirm hyprland mpv neovim playerctl alacritty rofi atuin zellij zsh tldr go git base-devel curl wget zsh playerctl udiskie grim slurp hyprpicker cliphist cmake meson ttf-jetbrains-mono ttf-jetbrains-mono-nerd cliphist wl-clipboard adobe-source-han-sans-jp-fonts fastfetch bat waybar python-pywal python-colorthief nvim htop pipewire pipewire-alsa pipewire-pulse wireplumber xdg-desktop-portal-hyprland polkit-kde-agent qt5-wayland qt6-wayland linux-headers
 echo "All pacman packages installed successfully!"
 
 
@@ -80,7 +80,7 @@ fi
 
 # nvidia stuff
 if ask "Install Nvidia drivers?"; then
-    yay -S --noconfirm  nvidia-580xx-dkms nvidia-580xx-settings nvidia-580xx-utils
+    yay -S --noconfirm  nvidia-580xx-dkms nvidia-580xx-settings nvidia-580xx-utils lib32-nvidia-580xx-utils
 else
     echo "Skipping nvidia drivers."
 fi
@@ -118,21 +118,21 @@ fi
 ############################################
 ############################################
 echo "Installing yay packages from the list..."
-yay -S --needed --noconfirm brave-bin copyq floorp-bin zen-browser-bin vscodium-bin wlogout noto-fonts-ar noctalia-shell matugen-bin adw-gtk-theme nwg-look qt6ct yay -S python-pywalfox
+yay -S --needed --noconfirm brave-bin copyq floorp-bin zen-browser-bin vscodium-bin wlogout noto-fonts-ar noctalia-shell matugen-bin adw-gtk-theme nwg-look qt6ct python-pywalfox python-pywal16
 echo "All yay packages installed successfully!"
 
 
 
 
-# noctalia settings
-echo "applying noctalia to gtk"
-gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'  # or 'prefer-light'
-# flatpak install org.gtk.Gtk3theme.adw-gtk3-dark
-# flatpak install org.gtk.Gtk3theme.adw-gtk3
-sudo pacman -S flatpak
-flatpak install -y --noninteractive --system flathub org.gtk.Gtk3theme.adw-gtk3-dark
-flatpak install -y --noninteractive --system flathub org.gtk.Gtk3theme.adw-gtk3
+# # noctalia settings
+# echo "applying noctalia to gtk"
+# gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
+# gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'  # or 'prefer-light'
+# # flatpak install org.gtk.Gtk3theme.adw-gtk3-dark
+# # flatpak install org.gtk.Gtk3theme.adw-gtk3
+# sudo pacman -S flatpak
+# flatpak install -y --noninteractive --system flathub org.gtk.Gtk3theme.adw-gtk3-dark
+# flatpak install -y --noninteractive --system flathub org.gtk.Gtk3theme.adw-gtk3
 
 
 
