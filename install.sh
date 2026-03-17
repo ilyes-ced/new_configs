@@ -2,7 +2,6 @@
 set -e
 
 
-
 if ! command -v sudo &>/dev/null; then
   echo "sudo not found. Install sudo first."
   exit 1
@@ -118,7 +117,7 @@ fi
 ############################################
 ############################################
 echo "Installing yay packages from the list..."
-yay -S --needed --noconfirm brave-bin copyq floorp-bin zen-browser-bin vscodium-bin wlogout noto-fonts-ar noctalia-shell matugen-bin adw-gtk-theme nwg-look qt6ct python-pywalfox python-pywal16
+yay -S --needed --noconfirm brave-bin copyq floorp-bin zen-browser-bin vscodium-bin wlogout noto-fonts-ar noctalia-shell matugen-bin adw-gtk-theme nwg-look qt6ct python-pywalfox python-pywal16 gnome-themes-extra gtk-engine-murrine sassc
 echo "All yay packages installed successfully!"
 
 

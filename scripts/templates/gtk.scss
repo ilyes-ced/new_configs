@@ -1,0 +1,72 @@
+// Default Theme Color Palette
+
+// Red
+$red-light: {{color1}};
+$red-dark: {{color9}};
+
+// Pink
+$pink-light: {{color2}};
+$pink-dark: {{color10}};
+
+// Purple
+$purple-light: {{color3}};
+$purple-dark: {{color11}};
+
+// Blue
+$blue-light: {{color4}};
+$blue-dark: {{color12}};
+
+// Teal
+$teal-light: {{color5}};
+$teal-dark: {{color13}};
+
+// Green
+$green-light: {{color6}};
+$green-dark: {{color14}};
+
+// Yellow
+$yellow-light: {{color7}};
+$yellow-dark: {{color15}};
+
+// Orange
+$orange-light: {{color8}};
+$orange-dark: {{color15}};
+
+// Grey
+$grey-050: {{shade2}};
+$grey-100: {{shade3}};
+$grey-150: {{shade4}};
+$grey-200: {{shade5}};
+$grey-250: {{shade6}};
+$grey-300: {{shade7}};
+$grey-350: {{shade8}};
+$grey-400: {{shade9}};
+$grey-450: {{shade10}};
+$grey-500: {{shade11}};
+$grey-550: {{shade12}};
+$grey-600: {{shade13}};
+$grey-650: {{shade14}};
+$grey-700: {{shade15}};
+$grey-750: {{shade16}};
+$grey-800: {{shade17}};
+$grey-850: {{shade18}};
+$grey-900: {{shade19}};
+$grey-950: {{background}};
+
+// White
+$white: {{foreground}};
+
+// Black
+$black: {{background}};
+
+// Button
+$button-close: $red-dark;
+$button-max: $green-dark;
+$button-min: $yellow-dark;
+
+// Link
+$links: $blue-light;
+
+// Theme
+$default-light: $blue-light;
+$default-dark: $blue-dark;

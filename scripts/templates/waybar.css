@@ -15,16 +15,16 @@
 @define-color blue          {{color13}};
 @define-color lavender      {{color14}};
 @define-color text          {{foreground}};
-@define-color subtext1      {{shade0}};
-@define-color subtext0      {{shade1}};
-@define-color overlay2      {{shade2}};
-@define-color overlay1      {{shade3}};
-@define-color overlay0      {{shade4}};
-@define-color surface2      {{shade5}};
-@define-color surface1      {{shade6}};
-@define-color surface0      {{shade7}};
-@define-color base          {{shade8}};
-@define-color mantle        {{shade9}};
+@define-color subtext1      {{shade1}};
+@define-color subtext0      {{shade3}};
+@define-color overlay2      {{shade5}};
+@define-color overlay1      {{shade7}};
+@define-color overlay0      {{shade9}};
+@define-color surface2      {{shade11}};
+@define-color surface1      {{shade13}};
+@define-color surface0      {{shade15}};
+@define-color base          {{shade17}};
+@define-color mantle        {{shade19}};
 @define-color crust         {{background}};
 
 /*

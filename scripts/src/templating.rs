@@ -61,6 +61,8 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
     let _ = create_file(&json_values, format!("{}{}", template_path, "starship.toml"), format!("{}{}", results_path, "starship.toml")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "zellij.kdl"), format!("{}{}", results_path, "zellij.kdl")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "alacritty.toml"), format!("{}{}", results_path, "alacritty.toml")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "gtk.scss"), format!("{}{}", results_path, "gtk.scss")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "icons_theme_install.sh"), format!("{}{}", results_path, "install.sh")).unwrap();
 
     Ok(())
 }
@@ -92,16 +94,26 @@ fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dy
             "color13": s["color13"],
             "color14": s["color14"],
             "color15": s["color15"],
-            "shade0": make_bright(s["background"].as_str().expect("Expected a string"), 10).unwrap(),
-            "shade1": make_bright(s["background"].as_str().expect("Expected a string"), 9).unwrap(),
-            "shade2": make_bright(s["background"].as_str().expect("Expected a string"), 8).unwrap(),
-            "shade3": make_bright(s["background"].as_str().expect("Expected a string"), 7).unwrap(),
-            "shade4": make_bright(s["background"].as_str().expect("Expected a string"), 6).unwrap(),
-            "shade5": make_bright(s["background"].as_str().expect("Expected a string"), 5).unwrap(),
-            "shade6": make_bright(s["background"].as_str().expect("Expected a string"), 4).unwrap(),
-            "shade7": make_bright(s["background"].as_str().expect("Expected a string"), 3).unwrap(),
-            "shade8": make_bright(s["background"].as_str().expect("Expected a string"), 2).unwrap(),
-            "shade9": make_bright(s["background"].as_str().expect("Expected a string"), 1).unwrap(),
+            "shade0": make_bright(s["background"].as_str().expect("Expected a string"), 20).unwrap(),
+            "shade1": make_bright(s["background"].as_str().expect("Expected a string"), 19).unwrap(),
+            "shade2": make_bright(s["background"].as_str().expect("Expected a string"), 18).unwrap(),
+            "shade3": make_bright(s["background"].as_str().expect("Expected a string"), 17).unwrap(),
+            "shade4": make_bright(s["background"].as_str().expect("Expected a string"), 16).unwrap(),
+            "shade5": make_bright(s["background"].as_str().expect("Expected a string"), 15).unwrap(),
+            "shade6": make_bright(s["background"].as_str().expect("Expected a string"), 14).unwrap(),
+            "shade7": make_bright(s["background"].as_str().expect("Expected a string"), 13).unwrap(),
+            "shade8": make_bright(s["background"].as_str().expect("Expected a string"), 12).unwrap(),
+            "shade9": make_bright(s["background"].as_str().expect("Expected a string"), 11).unwrap(),
+            "shade10": make_bright(s["background"].as_str().expect("Expected a string"), 10).unwrap(),
+            "shade11": make_bright(s["background"].as_str().expect("Expected a string"), 9).unwrap(),
+            "shade12": make_bright(s["background"].as_str().expect("Expected a string"), 8).unwrap(),
+            "shade13": make_bright(s["background"].as_str().expect("Expected a string"), 7).unwrap(),
+            "shade14": make_bright(s["background"].as_str().expect("Expected a string"), 6).unwrap(),
+            "shade15": make_bright(s["background"].as_str().expect("Expected a string"), 5).unwrap(),
+            "shade16": make_bright(s["background"].as_str().expect("Expected a string"), 4).unwrap(),
+            "shade17": make_bright(s["background"].as_str().expect("Expected a string"), 3).unwrap(),
+            "shade18": make_bright(s["background"].as_str().expect("Expected a string"), 2).unwrap(),
+            "shade19": make_bright(s["background"].as_str().expect("Expected a string"), 1).unwrap(),
             "background": s["background"],
             "foreground": s["foreground"],
             "cursor": s["cursor"],
@@ -142,7 +154,7 @@ fn read_scheme_json(path: &Path) -> Result<Value, ()> {
     Ok(json)
 }
 
-const BRIGHTER_VALUE: i64 = 20;
+const BRIGHTER_VALUE: i64 = 10;
 fn make_bright(color: &str, level: i64) -> Result<String, ()> {
     let r = &color[1..3];
     let g = &color[3..5];
