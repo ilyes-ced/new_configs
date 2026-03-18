@@ -1,17 +1,17 @@
 {
 	"memory": {
 		"interval": 10,
-		"format": "󰘚 {percentage}%",
-		"format-warning": "󰀧 {percentage}%",
-		"format-critical": "󰀧 {percentage}%",
+		"format": "󰘚 {used}GB/{total}GB",
+		"format-warning": "󰀧 󰘚 {used}GB/{total}GB%",
+		"format-critical": "󰀧 󰘚 {used}GB/{total}GB",
 		// "format-icons":
 		// "rotate":
 		"states": {
 			"warning": 75,
 			"critical": 90
 		},
-		"min-length": 7,
-		"max-length": 7,
+		"min-length": 17,
+		"max-length": 17,
 		// "align":
 		// "justify":
 		// "on-click":

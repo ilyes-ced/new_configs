@@ -63,6 +63,7 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
     let _ = create_file(&json_values, format!("{}{}", template_path, "alacritty.toml"), format!("{}{}", results_path, "alacritty.toml")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "gtk.scss"), format!("{}{}", results_path, "gtk.scss")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "icons_theme_install.sh"), format!("{}{}", results_path, "install.sh")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "qute.py"), format!("{}{}", results_path, "config.py")).unwrap();
 
     Ok(())
 }

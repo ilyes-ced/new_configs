@@ -10,6 +10,7 @@ cp ~/new_configs/scripts/active/starship.toml ~/.config/starship.toml
 cp ~/new_configs/scripts/active/alacritty.toml ~/.config/alacritty/colors.toml
 cp ~/new_configs/scripts/active/gtk.scss ~/new_configs/Colloid-gtk-theme/src/sass/_color-palette-custom.scss
 cp ~/new_configs/scripts/active/install.sh ~/new_configs/Colloid-icon-theme/install.sh
+cp ~/new_configs/scripts/active/config.py ~/.config/qutebrowser/
 
 
 swww img ~/new_configs/scripts/active/wallpaper 
