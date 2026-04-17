@@ -16,3 +16,19 @@ cd new_configs/scripts/src
 
 cargo run --bin change_theme -- --type=pywal --backend=colorthief --wallpaper=random && ../../copy_configs.sh && neofetch
 ```
+
+
+
+
+
+
+
+
+# todo
+- [ ] add qt5ct
+- [ ] add qt6ct
+- [ ] add kvantum
+- [ ] add option to use matugen alongside pywal and its backends
+- [ ] add custom pre made themes
+  - [ ] assign a few wallpapers to each premade theme
+- [ ] possible integration with wallpaper engine

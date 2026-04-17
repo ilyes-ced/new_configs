@@ -64,12 +64,21 @@
 
   "explorer.sortOrder": "type",
   "editor.tokenColorCustomizations": {
-    "comments": "#ff0000"
-    //"comments": "#39FF14"
+    "comments": "#ff0000",
+    // "comments": "#39FF14",
   },
+  // for Rust's comments
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true,
+    "rules": {
+      "comment": "#ff0000"
+    }
+  },
+
   "workbench.editorAssociations": {
     "*.sav": "default",
-    "*.md": "vscode.markdown.preview.editor"
+    "*.md": "vscode.markdown.preview.editor",
+    "*.css": "default"
   },
   "editor.unicodeHighlight.nonBasicASCII": false,
 
@@ -110,10 +119,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode"
@@ -182,5 +191,17 @@
       "path": "/usr/bin/qtpaths"
     }
   ],
-  "qt-core.qtInstallationRoot": "/home/ilyes/Qt"
+  "qt-core.qtInstallationRoot": "/home/ilyes/Qt",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "idf.hasWalkthroughBeenShown": true,
+  "stm32-for-vscode.openOCDPath": "/home/clippy/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/openocd/0.12.0-7.1/.content/bin/openocd",
+  "stm32-for-vscode.makePath": "/usr/bin/make",
+  "stm32-for-vscode.armToolchainPath": "/home/clippy/.config/VSCodium/User/globalStorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin",
+  "cmake.pinnedCommands": [
+    "workbench.action.tasks.configureTaskRunner",
+    "workbench.action.tasks.runTask"
+  ],
+  "editor.guides.bracketPairs": "active"
 }

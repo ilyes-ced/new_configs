@@ -55,7 +55,6 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
 
     let _ = create_file(&json_values, format!("{}{}", template_path, "hyprland.conf"), format!("{}{}", results_path, "hyprland.conf")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "dunstrc"), format!("{}{}", results_path, "dunstrc")).unwrap();
-    let _ = create_file(&json_values, format!("{}{}", template_path, "waybar.css"), format!("{}{}", results_path, "waybar.css")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "wlogout.css"), format!("{}{}", results_path, "wlogout.css")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "rofi.rasi"), format!("{}{}", results_path, "rofi.rasi")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "starship.toml"), format!("{}{}", results_path, "starship.toml")).unwrap();
@@ -64,6 +63,9 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
     let _ = create_file(&json_values, format!("{}{}", template_path, "gtk.scss"), format!("{}{}", results_path, "gtk.scss")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "icons_theme_install.sh"), format!("{}{}", results_path, "install.sh")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "qute.py"), format!("{}{}", results_path, "config.py")).unwrap();
+
+    let _ = create_file(&json_values, format!("{}{}", template_path, "waybar.css"), format!("{}{}", results_path, "waybar.css")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "waybar.jsonc"), format!("{}{}", results_path, "waybar.jsonc")).unwrap();
 
     Ok(())
 }

@@ -1,0 +1,63 @@
+/* catppuccin mocha */
+
+@define-color rosewater     {{color1}};
+@define-color flamingo      {{color2}};
+@define-color pink          {{color3}};
+@define-color mauve         {{color4}};
+@define-color red           {{color5}};
+@define-color maroon        {{color6}};
+@define-color peach         {{color7}};
+@define-color yellow        {{color8}};
+@define-color green         {{color9}};
+@define-color teal          {{color10}};
+@define-color sky           {{color11}};
+@define-color sapphire      {{color12}};
+@define-color blue          {{color13}};
+@define-color lavender      {{color14}};
+@define-color text          {{foreground}};
+@define-color subtext1      {{shade1}};
+@define-color subtext0      {{shade3}};
+@define-color overlay2      {{shade5}};
+@define-color overlay1      {{shade7}};
+@define-color overlay0      {{shade9}};
+@define-color surface2      {{shade11}};
+@define-color surface1      {{shade13}};
+@define-color surface0      {{shade15}};
+@define-color base          {{shade17}};
+@define-color mantle        {{shade19}};
+@define-color crust         {{background}};
+
+/*
+	br - border
+	bg - background
+	fg - foreground
+*/
+
+/* main colors */
+
+@define-color accent        @lavender;
+@define-color main-br       @subtext0;
+@define-color main-bg       @crust;
+@define-color main-fg       @text;
+@define-color hover-bg      @base;
+@define-color hover-fg      alpha(@main-fg, 0.75);
+@define-color outline       shade(@main-bg, 0.5);
+
+/* module colors */
+
+@define-color workspaces    @mantle;
+@define-color temperature   @mantle;
+@define-color memory        @base;
+@define-color cpu           @surface0;
+@define-color time          @surface0;
+@define-color date          @base;
+@define-color tray          @mantle;
+@define-color volume        @mantle;
+@define-color backlight     @base;
+@define-color battery       @surface0;
+
+/* state colors */
+
+@define-color warning       @yellow;
+@define-color critical      @red;
+@define-color charging      @green;

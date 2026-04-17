@@ -2,7 +2,6 @@
 
 cp ~/new_configs/scripts/active/hyprland.conf ~/.config/hypr/theme.conf
 cp ~/new_configs/scripts/active/dunstrc ~/.config/dunst/dunstrc
-cp ~/new_configs/scripts/active/waybar.css ~/.config/waybar/current-theme.css
 cp ~/new_configs/scripts/active/wlogout.css ~/.config/wlogout/style.css
 cp ~/new_configs/scripts/active/zellij.kdl ~/.config/zellij/config.kdl
 cp ~/new_configs/scripts/active/rofi.rasi ~/.config/rofi/colors.rasi
@@ -11,6 +10,10 @@ cp ~/new_configs/scripts/active/alacritty.toml ~/.config/alacritty/colors.toml
 cp ~/new_configs/scripts/active/gtk.scss ~/new_configs/Colloid-gtk-theme/src/sass/_color-palette-custom.scss
 cp ~/new_configs/scripts/active/install.sh ~/new_configs/Colloid-icon-theme/install.sh
 cp ~/new_configs/scripts/active/config.py ~/.config/qutebrowser/
+# old waybar
+cp ~/new_configs/scripts/active/old_waybar.css ~/.config/waybar/current-theme.css
+cp ~/new_configs/scripts/active/waybar.css ~/.config/waybar/style.css
+cp ~/new_configs/scripts/active/waybar.jsonc ~/.config/waybar/config.jsonc
 
 
 swww img ~/new_configs/scripts/active/wallpaper 

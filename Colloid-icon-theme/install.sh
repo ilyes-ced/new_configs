@@ -352,31 +352,31 @@ colors_folder() {
   if [[ "$scheme" == '-Custom' ]]; then
     case "$theme" in
       '')
-        theme_color='#8f8d98'
+        theme_color='#938b96'
         ;;
       -Purple)
-        theme_color='#5b596d'
+        theme_color='#61566a'
         ;;
       -Pink)
-        theme_color='#494dac'
+        theme_color='#5847a7'
         ;;
       -Red)
-        theme_color='#6974be'
+        theme_color='#a54782'
         ;;
       -Orange)
-        theme_color='#818ec9'
+        theme_color='#4a77ae'
         ;;
       -Yellow)
-        theme_color='#7a86c5'
+        theme_color='#715fba'
         ;;
       -Green)
-        theme_color='#8d65bd'
+        theme_color='#ab7ec7'
         ;;
       -Teal)
-        theme_color='#acbddb'
+        theme_color='#8eb6ce'
         ;;
       -Grey)
-        theme_color='#c2c1c5'
+        theme_color='#c2c1c3'
         ;;
     esac
   fi

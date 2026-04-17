@@ -1,63 +1,188 @@
-/* catppuccin mocha */
+/* ===== COLORS ===== */
+@define-color bg #0d0711;
+@define-color fg #c2c1c3;
+@define-color black #000000;
+@define-color white-soft #fff4d2;
 
-@define-color rosewater     #181a60;
-@define-color flamingo      #273381;
-@define-color pink          #324599;
-@define-color mauve         #37458a;
-@define-color red           #514163;
-@define-color maroon        #5177b7;
-@define-color peach         #8f8d98;
-@define-color yellow        #5b596d;
-@define-color green         #494dac;
-@define-color teal          #6974be;
-@define-color sky           #818ec9;
-@define-color sapphire      #7a86c5;
-@define-color blue          #8d65bd;
-@define-color lavender      #acbddb;
-@define-color text          #c2c1c5;
-@define-color subtext1      #c9c8d5;
-@define-color subtext0      #b5b4c1;
-@define-color overlay2      #a1a0ad;
-@define-color overlay1      #8d8c99;
-@define-color overlay0      #797885;
-@define-color surface2      #656471;
-@define-color surface1      #51505d;
-@define-color surface0      #3d3c49;
-@define-color base          #292835;
-@define-color mantle        #151421;
-@define-color crust         #0b0a17;
+@define-color red #2e2a46;
+@define-color red-dark #511e3d;
 
-/*
-	br - border
-	bg - background
-	fg - foreground
-*/
+@define-color orange #2d3c4d;
+@define-color yellow #443e5c;
+@define-color yellow-soft #694b7c;
 
-/* main colors */
+@define-color green #647279;
+@define-color green-dark #938b96;
 
-@define-color accent        @lavender;
-@define-color main-br       @subtext0;
-@define-color main-bg       @crust;
-@define-color main-fg       @text;
-@define-color hover-bg      @base;
-@define-color hover-fg      alpha(@main-fg, 0.75);
-@define-color outline       shade(@main-bg, 0.5);
+@define-color blue #61566a;
+@define-color blue-dark #5847a7;
 
-/* module colors */
+@define-color pink #a54782;
+@define-color pink-dark #4a77ae;
 
-@define-color workspaces    @mantle;
-@define-color temperature   @mantle;
-@define-color memory        @base;
-@define-color cpu           @surface0;
-@define-color time          @surface0;
-@define-color date          @base;
-@define-color tray          @mantle;
-@define-color volume        @mantle;
-@define-color backlight     @base;
-@define-color battery       @surface0;
+@define-color gray #715fba;
 
-/* state colors */
 
-@define-color warning       @yellow;
-@define-color critical      @red;
-@define-color charging      @green;
+/* ===== GLOBAL ===== */
+* {
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  border-radius: 0;
+  border: none;
+  text-shadow: none;
+  transition: none;
+  box-shadow: none;
+}
+
+window#waybar {
+  color: @fg;
+  background: @bg;
+  font-family: "JetBrains Mono Nerd Font";
+  font-size: 10pt;
+  font-weight: 900;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 3pt;
+  background: @bg;
+}
+
+/* ===== COMMON PADDING ===== */
+#custom-rofi,
+#window,
+#disk,
+#cpu,
+#temperature,
+#temperature.critical,
+#backlight,
+#memory,
+#pulseaudio,
+#pulseaudio.muted,
+#battery,
+#battery.critical,
+#battery.warning,
+#network,
+#clock {
+  padding-right: 6pt;
+}
+
+/* ===== MODULES ===== */
+#custom-rofi {
+  color: @black;
+  border: 2pt solid @blue-dark;
+  background: @blue;
+  padding: 0pt 6pt;
+}
+
+/* ===== WORKSPACES ===== */
+#workspaces button {
+  color: @white-soft;
+  background: @bg;
+  border: 2pt solid @white-soft;
+  margin-right: 3pt;
+  min-width: 15pt;
+  padding: 0 3.75pt;
+}
+
+#workspaces button:last-child {
+  margin-right: 0;
+}
+
+#workspaces button:hover {
+  color: @bg;
+  background: @pink;
+  border-color: @pink-dark;
+}
+
+#workspaces button.visible,
+#workspaces button.visible:hover,
+#workspaces button.active,
+#workspaces button.active:hover {
+  color: @black;
+  border-color: @green-dark;
+  background: @green;
+}
+
+#workspaces button.urgent {
+  color: @bg;
+  border-color: @red-dark;
+  background: @red;
+}
+
+/* ===== INDIVIDUAL MODULE STYLES ===== */
+#window {
+  border: 2pt solid @pink;
+}
+
+#tray {
+  border: 2pt solid @orange;
+  padding: 0 6pt;
+}
+
+#disk {
+  border: 2pt solid @red;
+}
+
+#cpu {
+  border: 2pt solid @orange;
+}
+
+#temperature {
+  border: 2pt solid @yellow-soft;
+}
+
+#temperature.critical {
+  color: @red-dark;
+  border: 2pt solid @red-dark;
+}
+
+#temperature.unknown {
+  border: 2pt solid @gray;
+}
+
+#backlight {
+  border: 2pt solid @yellow;
+}
+
+#memory {
+  border: 2pt solid @blue-dark;
+}
+
+#pulseaudio {
+  border: 2pt solid @blue;
+}
+
+#pulseaudio.muted {
+  border: 2pt solid @red;
+  color: @red;
+}
+
+#battery {
+  border: 2pt solid @green-dark;
+}
+
+#battery.critical {
+  border: 2pt solid @red-dark;
+}
+
+#battery.warning {
+  border: 2pt solid @orange;
+}
+
+#clock {
+  border: 2pt solid @green;
+}
+
+#network {
+  border: 2pt solid @pink;
+}
+
+#mode,
+#submap {
+  color: @blue;
+  border: 2pt solid @blue;
+  padding: 0 7.5pt;
+}

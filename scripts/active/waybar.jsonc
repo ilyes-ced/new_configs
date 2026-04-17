@@ -1,0 +1,165 @@
+{
+  "layer": "top",
+  "height": 20,
+  "spacing": 4,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "modules-left": [
+    // "custom/rofi",
+    "hyprland/workspaces",
+    "hyprland/window",
+    "tray",
+    "hyprland/submap"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "network",
+    "disk",
+    "cpu",
+    "temperature",
+    "backlight",
+    "memory",
+    "pulseaudio",
+    "battery"
+  ],
+  "custom/rofi": {
+    "format": "<span ></span>",
+    "on-click": "rofi -show drun -disable-history -show-icons -theme-str 'window { width: 22% ; location: northwest; margin: 10px 0 0 10px; } listview { lines: 20; }'",
+    "on-click-right": "~/.config/custom_scripts/power.sh",
+    "escape": true,
+    "tooltip": false
+  },
+  // Modules configuration
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "persistent-workspaces": {
+		"*": 5
+	},
+  },
+  "hyprland/window": {
+    "format": "<span color='#0d0711' bgcolor='#a54782' > 󰣆  </span> {class}",
+    "separate-outputs": true,
+    "icon": false,
+    "tooltip": false
+  },
+  "hyprland/submap": {
+    "format": " {}",
+    "max-length": 50
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 8
+  },
+  "disk": {
+    "format": "<span color='#0d0711' bgcolor='#2e2a46' > 󰋊 </span> {free}/{total}",
+    "interval": 20,
+    "unit": "GB"
+
+  },
+  "cpu": {
+    "format": "<span color='#0d0711' bgcolor='#2d3c4d' >   </span> {usage}%",
+    "tooltip": false,
+    "interval": 1,
+    "on-click-right": "~/.config/custom_scripts/launch_tui.sh btop"
+  },
+  "temperature": {
+    "thermal-zone": 1,
+		"critical-threshold": 90,
+		"interval": 10,
+		"format-critical": "<span color='#0d0711' bgcolor='#694b7c' > 󰀦 {icon} </span> {temperatureC}°C",
+		"format": "<span color='#0d0711' bgcolor='#511e3d' > {icon} </span> {temperatureC}°C",
+		"format-icons": [
+			"󱃃", "󰔏", "󱃂"
+		]
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "<span color='#0d0711' bgcolor='#443e5c' > 󰞏  </span> {percent}%",
+    "tooltip": false,
+    "on-click-right": "~/.config/custom_scripts/wlsunset.sh"
+  },
+  "memory": {
+    "interval": 2,
+    "return-type": "json",
+    "format": "<span color='#0d0711' bgcolor='#5847a7' >   </span> {used}/{total} GB",
+		"format-warning": "<span color='#0d0711' bgcolor='#2e2a46' > 󰀧   </span> {used}/{total} GB",
+		"format-critical": "<span color='#0d0711' bgcolor='#2e2a46' > 󰀧   </span> {used}/{total} GB",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    }
+  },
+  "pulseaudio": {
+    "scroll-step": 1,
+    "format": "<span color='#0d0711' bgcolor='#61566a' >   </span> {volume}%",
+    "format-muted": "<span color='#0d0711' bgcolor='#2e2a46' >   </span> {volume}%",
+    "format-bluetooth": "<span color='#0d0711' bgcolor='#61566a' > 󰂰 </span> {volume}%",
+    "format-bluetooth-muted": "<span color='#0d0711' bgcolor='#2e2a46' > 󰂲 </span> {volume}%",
+    "format-source": "{volume}% ",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "~/.config/custom_scripts/launch_tui.sh wiremix",
+    "tooltip": false,
+    "max-volume": 130
+  },
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 99,
+      "warning": 30,
+      "critical": 20
+    },
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "format": "<span color='#0d0711' bgcolor='#938b96' > {icon} </span> {capacity}%",
+    "format-critical": "<span color='#0d0711' bgcolor='#511e3d' > {icon} </span> {capacity}%!!",
+    "format-warning": "<span color='#0d0711' bgcolor='' > {icon} </span> {capacity}%",
+    "format-full": "<span color='#0d0711' bgcolor='#938b96' > {icon} </span> {capacity}%",
+    "format-charging": "<span color='#0d0711' bgcolor='#938b96' > 󰂅 </span> {capacity}%",
+    "format-charging-warning": "<span color='#0d0711' bgcolor='' > 󰢝 </span> {capacity}%",
+    "format-charging-critical": "<span color='#0d0711' bgcolor='#511e3d' > 󰢜 </span> {capacity}%",
+    "format-plugged": "<span color='#0d0711' bgcolor='#938b96' > 󰂅 </span> {capacity}%",
+    "format-alt": "<span color='#0d0711' bgcolor='#938b96' > 󱧥 </span> {time}",
+    "tooltip": false
+  },
+  "network": {
+    "interval": 2,
+    "format": "<span color='#0d0711' bgcolor='#a54782'> 󱘖  </span> {bandwidthDownBits}",
+    "format-wifi": "<span color='#0d0711' bgcolor='#a54782'> {icon} </span> {bandwidthDownBits}",
+    "format-ethernet": "<span color='#0d0711' bgcolor='#a54782'> 󰈀  </span> {bandwidthDownBytes}  | {bandwidthUpBytes}  ",
+    "format-icons": [
+      "󰤫",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip": false,
+    "states": {
+      "normal": 25
+    }
+  },
+  "clock": {
+    // "timezone": "America/New_York",
+    "format": "<span color='#0d0711' bgcolor='#647279' >   </span> {:%a %d | %H:%M}",
+    "tooltip": false,
+    "interval": 1
+  }
+}
+
+
