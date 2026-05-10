@@ -37,8 +37,8 @@
   "hyprland/workspaces": {
     "format": "{icon}",
     "persistent-workspaces": {
-		"*": 5
-	},
+	  	"*": 5
+	  }
   },
   "hyprland/window": {
     "format": "<span color='{{background}}' bgcolor='{{color10}}' > 󰣆  </span> {class}",
@@ -70,8 +70,8 @@
     "thermal-zone": 1,
 		"critical-threshold": 90,
 		"interval": 10,
-		"format-critical": "<span color='{{background}}' bgcolor='{{color5}}' > 󰀦 {icon} </span> {temperatureC}°C",
-		"format": "<span color='{{background}}' bgcolor='{{color2}}' > {icon} </span> {temperatureC}°C",
+		"format-critical": "<span color='{{background}}' bgcolor='{{color2}}' > 󰀦 {icon} </span> {temperatureC}°C",
+		"format": "<span color='{{background}}' bgcolor='{{color5}}' > {icon} </span> {temperatureC}°C",
 		"format-icons": [
 			"󱃃", "󰔏", "󱃂"
 		]

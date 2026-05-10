@@ -1,26 +1,26 @@
 /* ===== COLORS ===== */
-@define-color bg #0d0711;
-@define-color fg #c2c1c3;
+@define-color bg #000000;
+@define-color fg #c2c0c2;
 @define-color black #000000;
 @define-color white-soft #fff4d2;
 
-@define-color red #2e2a46;
-@define-color red-dark #511e3d;
+@define-color red #303346;
+@define-color red-dark #5e4251;
 
-@define-color orange #2d3c4d;
-@define-color yellow #443e5c;
-@define-color yellow-soft #694b7c;
+@define-color orange #40515d;
+@define-color yellow #48556d;
+@define-color yellow-soft #596f8c;
 
-@define-color green #647279;
-@define-color green-dark #938b96;
+@define-color green #60849e;
+@define-color green-dark #958a95;
 
-@define-color blue #61566a;
-@define-color blue-dark #5847a7;
+@define-color blue #695569;
+@define-color blue-dark #495aab;
 
-@define-color pink #a54782;
-@define-color pink-dark #4a77ae;
+@define-color pink #bc6393;
+@define-color pink-dark #6094bb;
 
-@define-color gray #715fba;
+@define-color gray #718fc2;
 
 
 /* ===== GLOBAL ===== */
@@ -39,14 +39,14 @@ window#waybar {
   color: @fg;
   background: @bg;
   font-family: "JetBrains Mono Nerd Font";
-  font-size: 10pt;
+  font-size: 10px;
   font-weight: 900;
 }
 
 .modules-left,
 .modules-center,
 .modules-right {
-  padding: 3pt;
+  padding: 3px;
   background: @bg;
 }
 
@@ -65,26 +65,27 @@ window#waybar {
 #battery.critical,
 #battery.warning,
 #network,
+#mpris,
 #clock {
-  padding-right: 6pt;
+  padding-right: 6px;
 }
 
 /* ===== MODULES ===== */
 #custom-rofi {
   color: @black;
-  border: 2pt solid @blue-dark;
+  border: 2px solid @blue-dark;
   background: @blue;
-  padding: 0pt 6pt;
+  padding: 0px 6px;
 }
 
 /* ===== WORKSPACES ===== */
 #workspaces button {
-  color: @white-soft;
+  color: @pink;
   background: @bg;
-  border: 2pt solid @white-soft;
-  margin-right: 3pt;
-  min-width: 15pt;
-  padding: 0 3.75pt;
+  border: 2px solid @red;
+  margin-right: 3px;
+  min-width: 15px;
+  padding: 0 3.75px;
 }
 
 #workspaces button:last-child {
@@ -102,8 +103,8 @@ window#waybar {
 #workspaces button.active,
 #workspaces button.active:hover {
   color: @black;
-  border-color: @green-dark;
-  background: @green;
+  border-color: @blue-dark;
+  background: @blue;
 }
 
 #workspaces button.urgent {
@@ -114,75 +115,80 @@ window#waybar {
 
 /* ===== INDIVIDUAL MODULE STYLES ===== */
 #window {
-  border: 2pt solid @pink;
+  border: 2px solid @pink;
 }
 
 #tray {
-  border: 2pt solid @orange;
-  padding: 0 6pt;
+  border: 2px solid @orange;
+  padding: 0 6px;
 }
 
 #disk {
-  border: 2pt solid @red;
+  border: 2px solid @red;
 }
 
 #cpu {
-  border: 2pt solid @orange;
+  border: 2px solid @orange;
 }
 
 #temperature {
-  border: 2pt solid @yellow-soft;
+  border: 2px solid @yellow-soft;
 }
 
 #temperature.critical {
   color: @red-dark;
-  border: 2pt solid @red-dark;
+  border: 2px solid @red-dark;
 }
 
 #temperature.unknown {
-  border: 2pt solid @gray;
+  border: 2px solid @gray;
 }
 
 #backlight {
-  border: 2pt solid @yellow;
+  border: 2px solid @yellow;
 }
 
 #memory {
-  border: 2pt solid @blue-dark;
+  border: 2px solid @blue-dark;
 }
 
 #pulseaudio {
-  border: 2pt solid @blue;
+  border: 2px solid @blue;
+}
+
+#mpris {
+  border: 2px solid @pink-dark;
+
 }
 
 #pulseaudio.muted {
-  border: 2pt solid @red;
+  border: 2px solid @red;
   color: @red;
 }
 
 #battery {
-  border: 2pt solid @green-dark;
+  border: 2px solid @green-dark;
 }
 
 #battery.critical {
-  border: 2pt solid @red-dark;
+  border: 2px solid @red-dark;
 }
 
 #battery.warning {
-  border: 2pt solid @orange;
+  border: 2px solid @orange;
 }
 
 #clock {
-  border: 2pt solid @green;
+  border: 2px solid @green;
 }
 
 #network {
-  border: 2pt solid @pink;
+  border: 2px solid @pink;
 }
 
 #mode,
 #submap {
   color: @blue;
-  border: 2pt solid @blue;
-  padding: 0 7.5pt;
+  border: 2px solid @blue;
+  padding: 0 7.5px;
 }

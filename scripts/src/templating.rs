@@ -117,7 +117,7 @@ fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dy
             "shade17": make_bright(s["background"].as_str().expect("Expected a string"), 3).unwrap(),
             "shade18": make_bright(s["background"].as_str().expect("Expected a string"), 2).unwrap(),
             "shade19": make_bright(s["background"].as_str().expect("Expected a string"), 1).unwrap(),
-            "background": s["background"],
+            "background": "#000000", // swithched from s["background"],
             "foreground": s["foreground"],
             "cursor": s["cursor"],
             "hypr_active_border": s["color5"].as_str().expect("Expected a string").strip_prefix('#').unwrap(),
@@ -141,7 +141,7 @@ fn create_file(s: &Value, template: String, result: String) -> Result<(), Box<dy
             "zellij_color13": hex_to_zellij_rgb(s["color13"].as_str().expect("Expected a string")),
             "zellij_color14": hex_to_zellij_rgb(s["color14"].as_str().expect("Expected a string")),
             "zellij_color15": hex_to_zellij_rgb(s["color15"].as_str().expect("Expected a string")),
-            "zellij_background": hex_to_zellij_rgb(s["background"].as_str().expect("Expected a string")),
+            "zellij_background": hex_to_zellij_rgb("#000000"), // swithched from s["background"],
             "zellij_foreground": hex_to_zellij_rgb(s["foreground"].as_str().expect("Expected a string")),
         }),
     )?;

@@ -16,6 +16,8 @@ cp ~/new_configs/scripts/active/waybar.css ~/.config/waybar/style.css
 cp ~/new_configs/scripts/active/waybar.jsonc ~/.config/waybar/config.jsonc
 
 
+pkill waybar && waybar
+
 swww img ~/new_configs/scripts/active/wallpaper 
 
 
