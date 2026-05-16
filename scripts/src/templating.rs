@@ -53,7 +53,7 @@ pub fn template(theme_name: Option<String>) -> Result<(), Box<dyn Error>> {
         home.join("new_configs/scripts/active/").to_string_lossy().into_owned()
     });
 
-    let _ = create_file(&json_values, format!("{}{}", template_path, "hyprland.conf"), format!("{}{}", results_path, "hyprland.conf")).unwrap();
+    let _ = create_file(&json_values, format!("{}{}", template_path, "hyprland.lua"), format!("{}{}", results_path, "hyprland.lua")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "dunstrc"), format!("{}{}", results_path, "dunstrc")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "wlogout.css"), format!("{}{}", results_path, "wlogout.css")).unwrap();
     let _ = create_file(&json_values, format!("{}{}", template_path, "rofi.rasi"), format!("{}{}", results_path, "rofi.rasi")).unwrap();

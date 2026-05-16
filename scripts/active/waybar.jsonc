@@ -41,7 +41,7 @@
 	  }
   },
   "hyprland/window": {
-    "format": "<span color='#000000' bgcolor='#bc6393' > 󰣆  </span> {class}",
+    "format": "<span color='#000000' bgcolor='#bc6379' > 󰣆  </span> {class}",
     "separate-outputs": true,
     "icon": false,
     "tooltip": false
@@ -55,13 +55,13 @@
     "spacing": 8
   },
   "disk": {
-    "format": "<span color='#000000' bgcolor='#303346' > 󰋊  </span> {free}/{total}",
+    "format": "<span color='#000000' bgcolor='#102b2d' > 󰋊  </span> {free}/{total}",
     "interval": 20,
     "unit": "GB"
 
   },
   "cpu": {
-    "format": "<span color='#000000' bgcolor='#40515d' >   </span> {usage}%",
+    "format": "<span color='#000000' bgcolor='#3f315d' >   </span> {usage}%",
     "tooltip": false,
     "interval": 1,
     "on-click-right": "~/.config/custom_scripts/launch_tui.sh btop"
@@ -70,24 +70,24 @@
     "thermal-zone": 1,
 		"critical-threshold": 90,
 		"interval": 10,
-		"format-critical": "<span color='#000000' bgcolor='#5e4251' > 󰀦 {icon} </span> {temperatureC}°C",
-		"format": "<span color='#000000' bgcolor='#596f8c' > {icon} </span> {temperatureC}°C",
+		"format-critical": "<span color='#000000' bgcolor='#930e2f' > 󰀦 {icon} </span> {temperatureC}°C",
+		"format": "<span color='#000000' bgcolor='#53567f' > {icon} </span> {temperatureC}°C",
 		"format-icons": [
 			"󱃃", "󰔏", "󱃂"
 		]
   },
   "backlight": {
     // "device": "acpi_video1",
-    "format": "<span color='#000000' bgcolor='#48556d' > 󰞏  </span> {percent}%",
+    "format": "<span color='#000000' bgcolor='#33613c' > 󰞏  </span> {percent}%",
     "tooltip": false,
     "on-click-right": "~/.config/custom_scripts/wlsunset.sh"
   },
   "memory": {
     "interval": 2,
     "return-type": "json",
-    "format": "<span color='#000000' bgcolor='#495aab' >   </span> {used}/{total} GB",
-		"format-warning": "<span color='#000000' bgcolor='#303346' > 󰀧   </span> {used}/{total} GB",
-		"format-critical": "<span color='#000000' bgcolor='#303346' > 󰀧   </span> {used}/{total} GB",
+    "format": "<span color='#000000' bgcolor='#387f84' >   </span> {used}/{total} GB",
+		"format-warning": "<span color='#000000' bgcolor='#102b2d' > 󰀧   </span> {used}/{total} GB",
+		"format-critical": "<span color='#000000' bgcolor='#102b2d' > 󰀧   </span> {used}/{total} GB",
     "states": {
       "warning": 70,
       "critical": 90
@@ -95,10 +95,10 @@
   },
   "pulseaudio": {
     "scroll-step": 1,
-    "format": "<span color='#000000' bgcolor='#695569' >   </span> {volume}%",
-    "format-muted": "<span color='#000000' bgcolor='#303346' >   </span> {volume}%",
-    "format-bluetooth": "<span color='#000000' bgcolor='#695569' > 󰂰 </span> {volume}%",
-    "format-bluetooth-muted": "<span color='#000000' bgcolor='#303346' > 󰂲 </span> {volume}%",
+    "format": "<span color='#000000' bgcolor='#6a575d' >   </span> {volume}%",
+    "format-muted": "<span color='#000000' bgcolor='#102b2d' >   </span> {volume}%",
+    "format-bluetooth": "<span color='#000000' bgcolor='#6a575d' > 󰂰 </span> {volume}%",
+    "format-bluetooth-muted": "<span color='#000000' bgcolor='#102b2d' > 󰂲 </span> {volume}%",
     "format-source": "{volume}% ",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "~/.config/custom_scripts/launch_tui.sh wiremix",
@@ -127,22 +127,22 @@
       "󰂂",
       "󰁹"
     ],
-    "format": "<span color='#000000' bgcolor='#958a95' > {icon} </span> {capacity}%",
-    "format-critical": "<span color='#000000' bgcolor='#5e4251' > {icon} </span> {capacity}%!!",
+    "format": "<span color='#000000' bgcolor='#968c90' > {icon} </span> {capacity}%",
+    "format-critical": "<span color='#000000' bgcolor='#930e2f' > {icon} </span> {capacity}%!!",
     "format-warning": "<span color='#000000' bgcolor='' > {icon} </span> {capacity}%",
-    "format-full": "<span color='#000000' bgcolor='#958a95' > {icon} </span> {capacity}%",
-    "format-charging": "<span color='#000000' bgcolor='#958a95' > 󰂅 </span> {capacity}%",
+    "format-full": "<span color='#000000' bgcolor='#968c90' > {icon} </span> {capacity}%",
+    "format-charging": "<span color='#000000' bgcolor='#968c90' > 󰂅 </span> {capacity}%",
     "format-charging-warning": "<span color='#000000' bgcolor='' > 󰢝 </span> {capacity}%",
-    "format-charging-critical": "<span color='#000000' bgcolor='#5e4251' > 󰢜 </span> {capacity}%",
-    "format-plugged": "<span color='#000000' bgcolor='#958a95' > 󰂅 </span> {capacity}%",
-    "format-alt": "<span color='#000000' bgcolor='#958a95' > 󱧥 </span> {time}",
+    "format-charging-critical": "<span color='#000000' bgcolor='#930e2f' > 󰢜 </span> {capacity}%",
+    "format-plugged": "<span color='#000000' bgcolor='#968c90' > 󰂅 </span> {capacity}%",
+    "format-alt": "<span color='#000000' bgcolor='#968c90' > 󱧥 </span> {time}",
     "tooltip": false
   },
   "network": {
     "interval": 2,
-    "format": "<span color='#000000' bgcolor='#bc6393'> 󱘖  </span> {bandwidthDownBits}",
-    "format-wifi": "<span color='#000000' bgcolor='#bc6393'> {icon} </span> {bandwidthDownBits}",
-    "format-ethernet": "<span color='#000000' bgcolor='#bc6393'> 󰈀  </span> {bandwidthDownBytes}  | {bandwidthUpBytes}  ",
+    "format": "<span color='#000000' bgcolor='#bc6379'> 󱘖  </span> {bandwidthDownBits}",
+    "format-wifi": "<span color='#000000' bgcolor='#bc6379'> {icon} </span> {bandwidthDownBits}",
+    "format-ethernet": "<span color='#000000' bgcolor='#bc6379'> 󰈀  </span> {bandwidthDownBytes}  | {bandwidthUpBytes}  ",
     "format-icons": [
       "󰤫",
       "󰤟",
@@ -157,13 +157,13 @@
   },
   "clock": {
     "timezone": "Europe/London",
-    "format": "<span color='#000000' bgcolor='#60849e' >   </span> {:%a %d | %H:%M}",
+    "format": "<span color='#000000' bgcolor='#517e4e' >   </span> {:%a %d | %H:%M}",
     "tooltip": false,
     "interval": 1
   },
   "mpris": {
-		"format": "<span color='#000000' bgcolor='#6094bb' > {player_icon} </span> {title} - {artist}",
-		"format-paused": "<span color='#000000' bgcolor='#6094bb' > {status_icon} </span> {title} - {artist}",
+		"format": "<span color='#000000' bgcolor='#7357b7' > {player_icon} </span> {title} - {artist}",
+		"format-paused": "<span color='#000000' bgcolor='#7357b7' > {status_icon} </span> {title} - {artist}",
 		"player-icons": {
 			"default": "󰐊"
 		},

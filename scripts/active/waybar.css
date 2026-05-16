@@ -1,26 +1,26 @@
 /* ===== COLORS ===== */
 @define-color bg #000000;
-@define-color fg #c2c0c2;
+@define-color fg #c3c1c2;
 @define-color black #000000;
 @define-color white-soft #fff4d2;
 
-@define-color red #303346;
-@define-color red-dark #5e4251;
+@define-color red #102b2d;
+@define-color red-dark #930e2f;
 
-@define-color orange #40515d;
-@define-color yellow #48556d;
-@define-color yellow-soft #596f8c;
+@define-color orange #3f315d;
+@define-color yellow #33613c;
+@define-color yellow-soft #53567f;
 
-@define-color green #60849e;
-@define-color green-dark #958a95;
+@define-color green #517e4e;
+@define-color green-dark #968c90;
 
-@define-color blue #695569;
-@define-color blue-dark #495aab;
+@define-color blue #6a575d;
+@define-color blue-dark #387f84;
 
-@define-color pink #bc6393;
-@define-color pink-dark #6094bb;
+@define-color pink #bc6379;
+@define-color pink-dark #7357b7;
 
-@define-color gray #718fc2;
+@define-color gray #5ab86e;
 
 
 /* ===== GLOBAL ===== */
